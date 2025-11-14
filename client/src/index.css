@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@keyframes scroll-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll-x {
+  animation: scroll-x 25s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+/* Hide scrollbar (nice and clean) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Allow touch panning on mobile */
+.touch-pan-x {
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+
+/* Optional: small improvement for keyboard focus scroll */
+:focus {
+  outline: none;
+}
