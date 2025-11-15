@@ -111,8 +111,20 @@ const Gallery = () => {
                       className="relative cursor-pointer"
                       onClick={() => setSelectedImage(office)}
                     >
-                      <img
+                      {/* <img
                         src={office.images?.[0] || "/placeholder.jpg"}
+                        alt={office.name || "Office image"}
+                        className="w-full h-48 md:h-56 lg:h-64 object-cover rounded-t-lg"
+                      /> */}
+                      <img
+                        src={
+                          office.images?.[0]
+                            ? office.images[0].replace(
+                                "/upload/",
+                                "/upload/f_auto,q_auto:eco,w_400,h_280,c_fill,g_auto/"
+                              )
+                            : "/placeholder.jpg"
+                        }
                         alt={office.name || "Office image"}
                         className="w-full h-48 md:h-56 lg:h-64 object-cover rounded-t-lg"
                       />

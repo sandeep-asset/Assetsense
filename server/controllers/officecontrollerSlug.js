@@ -46,33 +46,75 @@ export const createOffice = async (req, res) => {
     const imageUrls = [];
 
     // Upload images if Cloudinary is configured
+    // if (
+    //   req.files &&
+    //   req.files.length > 0 &&
+    //   process.env.CLOUDINARY_CLOUD_NAME
+    // ) {
+    //   for (const file of req.files) {
+    //     try {
+    //       const result = await new Promise((resolve, reject) => {
+    //         const uploadStream = cloudinary.uploader.upload_stream(
+    //           { resource_type: "image" },
+    //           (error, result) => {
+    //             if (error) reject(error);
+    //             else resolve(result);
+    //           }
+    //         );
+    //         uploadStream.end(file.buffer);
+    //       });
+    //       imageUrls.push(result.secure_url);
+    //     } catch (err) {
+    //       console.error("Cloudinary upload error:", err);
+    //     }
+    //   }
+    // } else if (req.files && req.files.length > 0) {
+    //   imageUrls.push(
+    //     ...Array(req.files.length).fill("/placeholder-office.jpg")
+    //   );
+    // }
     if (
-      req.files &&
-      req.files.length > 0 &&
-      process.env.CLOUDINARY_CLOUD_NAME
-    ) {
-      for (const file of req.files) {
-        try {
-          const result = await new Promise((resolve, reject) => {
-            const uploadStream = cloudinary.uploader.upload_stream(
-              { resource_type: "image" },
-              (error, result) => {
-                if (error) reject(error);
-                else resolve(result);
-              }
-            );
-            uploadStream.end(file.buffer);
-          });
-          imageUrls.push(result.secure_url);
-        } catch (err) {
-          console.error("Cloudinary upload error:", err);
-        }
-      }
-    } else if (req.files && req.files.length > 0) {
-      imageUrls.push(
-        ...Array(req.files.length).fill("/placeholder-office.jpg")
-      );
+  req.files &&
+  req.files.length > 0 &&
+  process.env.CLOUDINARY_CLOUD_NAME
+) {
+  for (const file of req.files) {
+    try {
+      const result = await new Promise((resolve, reject) => {
+        const uploadStream = cloudinary.uploader.upload_stream(
+          {
+            resource_type: "image",
+
+            // 🔥 ADD THESE OPTIMIZATION SETTINGS 🔥
+            folder: "property_images",
+
+            transformation: [
+              { width: 1600, crop: "limit" },      // prevent large uploads
+              { fetch_format: "auto" },            // convert to WebP/AVIF
+              { quality: "auto:good" },            // good quality, low size
+              { flags: "lossy" },                  // efficient compression
+            ],
+          },
+          (error, result) => {
+            if (error) reject(error);
+            else resolve(result);
+          }
+        );
+        uploadStream.end(file.buffer);
+      });
+
+      imageUrls.push(result.secure_url);
+
+    } catch (err) {
+      console.error("Cloudinary upload error:", err);
     }
+  }
+} else if (req.files && req.files.length > 0) {
+  imageUrls.push(
+    ...Array(req.files.length).fill("/placeholder-office.jpg")
+  );
+}
+
 
     // ✅ Generate unique slug
     const baseSlug = slugify(

@@ -95,10 +95,25 @@ const OfficeCard = ({ office, compact = false }) => {
         )}
 
         {/* 🏢 Office Image */}
-        <img
+        {/* <img
           src={office.images?.[0] || "/placeholder-office.jpg"}
           alt={office.name}
           className="w-full h-32 object-cover rounded-t-xl  transition-transform duration-300"
+          onError={(e) => {
+            e.target.src = "/placeholder-office.jpg";
+          }}
+        /> */}
+        <img
+          src={
+            office.images?.[0]
+              ? office.images[0].replace(
+                  "/upload/",
+                  "/upload/f_auto,q_auto:eco,w_400,h_280,c_fill,g_auto/"
+                )
+              : "/placeholder-office.jpg"
+          }
+          alt={office.name}
+          className="w-full h-40 object-cover rounded-t-xl transition-transform duration-300"
           onError={(e) => {
             e.target.src = "/placeholder-office.jpg";
           }}

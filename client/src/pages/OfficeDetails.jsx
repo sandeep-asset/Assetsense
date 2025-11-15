@@ -163,12 +163,27 @@ const OfficeDetails = () => {
           <div className="lg:col-span-2">
             {/* Main Image */}
             <div className="bg-gray-200 rounded-lg overflow-hidden mb-4">
-              <img
+              {/* <img
                 src={
                   office.images?.[selectedImage] || "/placeholder-office.jpg"
                 }
                 alt={office.name}
                 className="w-full h-96 object-cover"
+                onError={(e) => {
+                  e.target.src = "/placeholder-office.jpg";
+                }}
+              /> */}
+              <img
+                src={
+                  office.images?.[selectedImage]
+                    ? office.images[selectedImage].replace(
+                        "/upload/",
+                        "/upload/f_auto,q_auto:good,w_1400/"
+                      )
+                    : "/placeholder-office.jpg"
+                }
+                alt={office.name}
+                className="w-full h-96 object-cover rounded-lg"
                 onError={(e) => {
                   e.target.src = "/placeholder-office.jpg";
                 }}
