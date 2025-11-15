@@ -149,7 +149,7 @@ const Home = () => {
             Pan-India <span className="text-blue-600">Coworking</span> &{" "}
             <span className="text-[#17CFBF]">Virtual Office</span>
             <br />
-            Affordable Solutions in 50+ Locations
+            Affordable Solutions in 50+ Locations Ranjeet Yadav
           </h1>
 
           {/* Subtitle */}
