@@ -149,10 +149,10 @@ const Home = () => {
             Pan-India <span className="text-blue-600">Coworking</span> &{" "}
             <span className="text-[#17CFBF]">Virtual Office</span>
             <br />
-            Affordable Solutions in 50+ Locations !
+            Affordable Solutions in 50+ Locations
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle of home sections */}
           <p className="md:text-lg text-sm text-white mb-5 max-w-3xl mx-auto animate-fade-in-up">
             Get GST, MCA, Shop & Establishment, RERA, FSSAI, and similar
             business registrations—available across all major Indian cities.
