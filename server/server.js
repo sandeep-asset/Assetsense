@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import officeRoutes from "./routes/officeslug.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import sitemapRoute from "./routes/sitemap.js";
 import { verifyPaymentWebhook } from "./controllers/orderController.js";
 
 dotenv.config();
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.use("/", sitemapRoute);
 app.use("/api/auth", authRoutes);
 app.use("/api/offices", officeRoutes);
 app.use("/api/orders", orderRoutes);

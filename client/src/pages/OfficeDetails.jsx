@@ -248,7 +248,7 @@ const OfficeDetails = () => {
                   Available Services Included in Your Plan {office.name}
                 </h2>
                 <p className="text-gray-700 text-xl font-semibold text-center mb-8 max-w-2xl mx-auto">
-                  Here’s exactly what you’ll get when you book your
+                  Here’s exactly what you’ll get when you book
                 </p>
 
                 {/* Included Services Grid */}
@@ -325,59 +325,7 @@ const OfficeDetails = () => {
             )}
             {/* //end available services */}
             {/* start of upsell services */}
-            {/* {office.upsellservices && office.upsellservices.length > 0 && (
-              <div className="bg-gradient-to-br from-amber-50 via-white to-amber-50 rounded-2xl shadow-lg border border-amber-200/60 p-8 mt-10 mb-8">
-               
-                <h2 className="text-xl md:text-3xl font-bold text-center text-gray-900 mb-3">
-                  🛍️ Optional Add-ons (Available at Checkout)
-                </h2>
-                <p className="text-gray-700 text-base md:text-lg text-center mb-10 max-w-2xl mx-auto">
-                  Customize your plan with these premium add-ons and save more
-                  with
-                  <span className="font-semibold text-amber-600">
-                    {" "}
-                    Asset Sense exclusive prices!
-                  </span>
-                </p>
 
-               
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {office.upsellservices.map((s, index) => {
-                    const savings =
-                      Number(s.regularprice || 0) -
-                      Number(s.assetsenseprice || 0);
-
-                    return (
-                      <div
-                        key={index}
-                        className="group relative bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col p-6 overflow-hidden"
-                      >
-                       
-                        {savings > 1000 && (
-                          <span className="absolute top-3 right-3 bg-amber-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-sm">
-                            Popular
-                          </span>
-                        )}
-
-                        
-                        <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 group-hover:text-amber-600 transition-colors">
-                          {s.name}
-                        </h3>
-
-                       
-                        <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">
-                          {s.description ||
-                            "Enhance your virtual office setup with this professional add-on service."}
-                        </p>
-
-                       
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )} */}
-            {/* end of upsell services */}
             {/* Features */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">

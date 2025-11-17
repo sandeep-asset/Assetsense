@@ -26,6 +26,12 @@ import AdminOrders from "./components/AdminComponents/AdminOrders";
 import Checkout from "./pages/Checkout";
 import OrderDetails from "./components/AdminComponents/OrderDetails";
 import PaymentStatus from "./components/Payment/PaymentStatus";
+import Privacy from "./pages/Privacy";
+import RefundPolicy from "./pages/Refund";
+import TermsAndConditions from "./pages/Termandcondition";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import OurServices from "./pages/OurServices";
 
 function App() {
   return (
@@ -47,7 +53,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/payment-status" element={<PaymentStatus />} />
-
+            <Route path="/privacy-policy" element={<Privacy />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/terms-conditions" element={<TermsAndConditions />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/our-services" element={<OurServices />} />
             <Route
               path="/admin"
               element={

@@ -18,9 +18,9 @@ const FooterNew = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Column 1: Company Info */}
             <div className="space-y-4">
-              <div className="text-2xl font-bold mb-2">
+              <div className="text-3xl font-bold mb-2">
                 <a href="/virtual-office">
-                  <img className="w-35 h-20" src="/logo.png" alt="logo" />
+                  <img className="w-35 h-13" src="/aswlogo.png" alt="logo" />
                 </a>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -64,7 +64,7 @@ const FooterNew = () => {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="/"
+                    href="/search"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Coworking Spaces
@@ -121,7 +121,7 @@ const FooterNew = () => {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="3"
+                    href="/about"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     About Us
@@ -129,10 +129,10 @@ const FooterNew = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/our-services"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Our Locations
+                    Our Services
                   </a>
                 </li>
                 <li>
@@ -161,7 +161,7 @@ const FooterNew = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="/contact"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Contact Us
@@ -191,7 +191,7 @@ const FooterNew = () => {
                 <div className="flex items-center space-x-3">
                   <FiPhone className="w-5 h-5 text-gray-400" />
                   <a
-                    href="tel:+911234567890"
+                    href="tel:+919907800600"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     +91 9907800600

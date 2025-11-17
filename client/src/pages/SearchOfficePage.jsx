@@ -412,15 +412,17 @@ const SearchOfficePage = () => {
                           {office.specialtag && (
                             <span
                               className={`absolute top-1 right-3 px-3 py-1  rounded text-xs font-bold shadow-lg border border-white/40
-                                ${
-                                  office.specialtag === "Popular"
-                                    ? "bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white"
-                                    : office.specialtag === "Affordable"
-                                    ? "bg-gradient-to-r from-green-600 via-emerald-500 to-lime-500 text-white"
-                                    : office.specialtag === "Best Value"
-                                    ? "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white"
-                                    : "bg-gradient-to-r from-cyan-600 via-sky-500 to-blue-500 text-white"
-                                }
+                               ${
+                                 office.specialtag === "Premium"
+                                   ? "bg-gradient-to-r from-[#cf174e] via-red-500 to-[#cf1798] text-white"
+                                   : office.specialtag === "Best Value"
+                                   ? "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white"
+                                   : office.specialtag === "Affordable"
+                                   ? "bg-gradient-to-r from-[#ec430f] via-[#cfbd17] to-[#51cf17] text-white"
+                                   : office.specialtag === "New Listing"
+                                   ? "bg-gradient-to-r from-[#5dc062] via-[#196e259f] to-[#093621] text-white"
+                                   : "bg-gradient-to-r from-[#794d75] via-[#a8a75f] to-[#7d7e4e] text-white" // default
+                               }
                               `}
                               style={{ transform: "translateY(-50%)" }} // makes it half outside
                             >

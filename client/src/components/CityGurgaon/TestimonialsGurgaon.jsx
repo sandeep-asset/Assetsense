@@ -237,6 +237,11 @@ const TestimonialsGurgaon = () => {
                     alt="Halejo"
                     className="h-16 w-auto object-contain"
                   />
+                  <img
+                    src="/logos/codegyan.png"
+                    alt="Halejo"
+                    className="h-16 w-auto object-contain"
+                  />
                 </div>
               ))}
             </div>

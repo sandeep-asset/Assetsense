@@ -159,8 +159,8 @@ const Checkout = () => {
                     <span className="text-gray-800  font-medium">{s.name}</span>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-700 font-semibold text-xs line-through">
-                      Regular Price : ₹{s.regularprice}
+                    <p className="text-gray-700 font-semibold text-xs ">
+                      Regular Price : ₹<span className="line-through">{s.regularprice}</span>
                     </p>
                     <p className="text-blue-700 text-xs font-semibold">
                       Asset Sense Price : ₹{s.assetsenseprice}

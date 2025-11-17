@@ -74,7 +74,7 @@ const OfficeCard = ({ office, compact = false }) => {
             <span
               className={`relative px-2 py-1 z-1 rounded text-xs font-semibold shadow-lg  tracking-wide border border-white/40
                     ${
-                      office.specialtag === "Primium"
+                      office.specialtag === "Premium"
                         ? "bg-gradient-to-r from-[#cf174e] via-red-500 to-[#cf1798] text-white"
                         : office.specialtag === "Best Value"
                         ? "bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white"

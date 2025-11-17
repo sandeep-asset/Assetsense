@@ -182,7 +182,76 @@ const Home = () => {
             ))}
           </div>
         </div>
+        {/* our client */}
       </header>
+      {/* our client Starts */}
+      <div className="mt-6 text-center">
+        <p className="text-2xl text-gray-700 mb-6">
+          Trusted by leading Indian brands
+        </p>
+        <div className="relative w-full overflow-hidden">
+          <div className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-gray-50 to-transparent z-10" />
+          <div className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-gray-50 to-transparent z-10" />
+          <div className="flex animate-scroll-x hover:[animation-play-state:paused] gap-12 items-center opacity-80">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-12 items-center shrink-0">
+                <img
+                  src="/logos/Alcravo.png"
+                  alt="Alcravo"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/Andhrola.png"
+                  alt="Andhrola"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/hindustanGold.png"
+                  alt="HindustanGold"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/pajson.png"
+                  alt="Pajson"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/dreamlingerie.png"
+                  alt="Dream Lingerie"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/madsign.png"
+                  alt="Mad Sign"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/saurabheng.png"
+                  alt="Saurabh Eng"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/abhiyantri.png"
+                  alt="Abhiyantri"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/halejo.png"
+                  alt="Halejo"
+                  className="h-16 w-auto object-contain"
+                />
+                <img
+                  src="/logos/codegyan.png"
+                  alt="Halejo"
+                  className="h-16 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* our client end */}
+
       <div className="min-h-screen bg-gradient-to-br from-gray-50 pt-10 to-blue-50">
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
           {/* Hero Section with Stats */}
