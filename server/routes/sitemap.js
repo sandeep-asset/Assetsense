@@ -43,11 +43,6 @@ router.get("/sitemap.xml", async (req, res) => {
       });
 
       // Checkout pages (if you want Google to index them)
-      smStream.write({
-        url: `/checkout/${office.slug}`,
-        changefreq: "monthly",
-        priority: 0.6,
-      });
     });
 
     // -------- FINISH & SEND XML --------
