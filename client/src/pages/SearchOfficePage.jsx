@@ -507,7 +507,6 @@ const SearchOfficePage = () => {
                             {/* Bottom Row - Capacity & Actions */}
                             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                               <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 text-sm text-gray-700">
-                                {/* Capacity */}
                                 {office.capacity && (
                                   <div className="flex items-center bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 shadow-sm">
                                     <FaUsers className="mr-2 h-5 w-5 text-gray-600" />
@@ -518,38 +517,119 @@ const SearchOfficePage = () => {
                                 )}
 
                                 {/* Pricing — dynamically rendered based on type */}
-                                {office.type === "Virtual Office" &&
-                                  office.pricing?.yearly && (
-                                    <div className="flex items-center bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition-colors font-semibold text-sm">
-                                      ₹{office.pricing.yearly.toLocaleString()}
-                                      /year
-                                    </div>
-                                  )}
 
-                                {office.type === "Coworking Space" &&
-                                  office.pricing?.monthly && (
-                                    <div className="flex items-center bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-sm">
-                                      ₹{office.pricing.monthly.toLocaleString()}
-                                      /month
-                                    </div>
-                                  )}
+                                <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+                                  <div className="space-y-1">
+                                    {/* Virtual Office Pricing */}
+                                    {office.type === "Virtual Office" && (
+                                      <div>
+                                        {office.pricing?.discount > 0 ? (
+                                          <div className="flex flex-col">
+                                            <div className="flex items-center gap-2">
+                                              <span className="text-sm font-bold text-blue-600">
+                                                ₹
+                                                {Math.round(
+                                                  office.pricing.yearly -
+                                                    (office.pricing.yearly *
+                                                      office.pricing.discount) /
+                                                      100
+                                                ).toLocaleString()}
+                                                /Year
+                                              </span>
+                                              <span className="text-xs font-semibold text-green-600">
+                                                🎉 {office.pricing.discount}%
+                                                OFF
+                                              </span>
+                                            </div>
+                                            <span className="text-sm text-gray-700 font-semibold line-through">
+                                              ₹
+                                              {office.pricing?.yearly?.toLocaleString() ||
+                                                "N/A"}
+                                            </span>
+                                          </div>
+                                        ) : (
+                                          <div className="text-lg font-bold text-blue-600">
+                                            ₹
+                                            {office.pricing?.yearly?.toLocaleString() ||
+                                              "N/A"}
+                                            /Year
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
 
-                                {office.type === "Virtual and Coworking" && (
-                                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 bg-gray-100 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-semibold text-sm">
-                                    <span>
-                                      Virtual: ₹
-                                      {office.pricing?.yearly?.toLocaleString() ||
-                                        "N/A"}
-                                      /year
-                                    </span>
-                                    <span>
-                                      Coworking: ₹
-                                      {office.pricing?.monthly?.toLocaleString() ||
-                                        "N/A"}
-                                      /month
-                                    </span>
+                                    {/* Coworking Pricing */}
+                                    {office.type === "Coworking Space" && (
+                                      <div>
+                                        {office.pricing?.discount > 0 ? (
+                                          <div className="flex flex-col">
+                                            <div className="flex items-center gap-2">
+                                              <span className="text-sm  font-bold text-blue-600">
+                                                ₹
+                                                {Math.round(
+                                                  office.pricing.monthly -
+                                                    (office.pricing.monthly *
+                                                      office.pricing.discount) /
+                                                      100
+                                                ).toLocaleString()}
+                                                /Month
+                                              </span>
+                                              <span className="text-xs font-semibold text-green-600">
+                                                💥 {office.pricing.discount}%
+                                                OFF
+                                              </span>
+                                            </div>
+                                            <span className="text-sm text-gray-500 line-through">
+                                              ₹
+                                              {office.pricing?.monthly?.toLocaleString() ||
+                                                "N/A"}
+                                            </span>
+                                          </div>
+                                        ) : (
+                                          <div className="text-lg font-bold text-blue-600">
+                                            ₹
+                                            {office.pricing?.monthly?.toLocaleString() ||
+                                              "N/A"}
+                                            /Month
+                                          </div>
+                                        )}
+                                      </div>
+                                    )}
+
+                                    {/* Combined Pricing */}
+                                    {office.type ===
+                                      "Virtual and Coworking" && (
+                                      <div className="flex flex-col leading-tight">
+                                        <span className="text-blue-600  font-bold text-base">
+                                          Virtual: ₹
+                                          {office.pricing?.yearly
+                                            ? Math.round(
+                                                office.pricing.yearly -
+                                                  (office.pricing.yearly *
+                                                    (office.pricing.discount ||
+                                                      0)) /
+                                                    100
+                                              ).toLocaleString()
+                                            : "N/A"}
+                                          /Year
+                                        </span>
+                                        <span className="text-blue-500 font-semibold text-sm">
+                                          Coworking: ₹
+                                          {office.pricing?.monthly
+                                            ? Math.round(
+                                                office.pricing.monthly -
+                                                  (office.pricing.monthly *
+                                                    (office.pricing.discount ||
+                                                      0)) /
+                                                    100
+                                              ).toLocaleString()
+                                            : "N/A"}
+                                          /Month
+                                        </span>
+                                      </div>
+                                    )}
                                   </div>
-                                )}
+                                </div>
                               </div>
 
                               <div className="flex justify-between items-center w-full gap-2">
@@ -557,7 +637,7 @@ const SearchOfficePage = () => {
                                   href={`/office/${office.slug}`}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors font-semibold text-sm"
+                                  className="flex items-center gap-2 bg-gray-100 text-gray-800 px-4 py-2 border rounded-lg hover:bg-gray-200 transition-colors font-semibold text-sm"
                                 >
                                   View Details
                                   <FaArrowRight className="text-xs" />

@@ -492,11 +492,13 @@ const AdminDashboard = () => {
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {office.pricing.yearly >0 && (<div className="text-sm font-semibold text-gray-900">
-                          ₹{office.pricing.yearly}/year
-                        </div>)}
-                        {office.pricing.monthly >0 && (
-                          <div className="text-sm text-gray-500">
+                        {office.pricing.yearly > 0 && (
+                          <div className="text-sm font-semibold text-gray-900">
+                            ₹{office.pricing.yearly}/year
+                          </div>
+                        )}
+                        {office.pricing.monthly > 0 && (
+                          <div className="text-sm font-semibold text-gray-900">
                             ₹{office.pricing.monthly}/month
                           </div>
                         )}
