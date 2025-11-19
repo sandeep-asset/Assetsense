@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PSQDirector from "/PalmSquare/PSQ Director Room.jpg";
+
 import {
   FaMapMarkerAlt,
   FaFileAlt,
@@ -108,7 +108,7 @@ const Virtual = () => {
 
           <div className="animate-fade-in-up order-1 md:order-2">
             <img
-              src={PSQDirector}
+              src="/virtual1.jpg"
               alt="Professional virtual office reception area"
               className="rounded-lg shadow-xl w-full h-[400px] object-cover"
             />
