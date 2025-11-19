@@ -26,7 +26,7 @@ const Coworking = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
           <div className="animate-fade-in-up">
             <img
-              src={PSQoverview}
+              src="/cowkring.png"
               alt="Modern coworking space with collaborative areas"
               className="rounded-lg shadow-xl w-full h-[400px] object-cover"
             />

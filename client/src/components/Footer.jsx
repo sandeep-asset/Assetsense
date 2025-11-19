@@ -19,7 +19,7 @@ const FooterNew = () => {
             {/* Column 1: Company Info */}
             <div className="space-y-4">
               <div className="text-3xl font-bold mb-2">
-                <a href="/virtual-office">
+                <a href="/">
                   <img className="w-35 h-13" src="/aswlogo.png" alt="logo" />
                 </a>
               </div>

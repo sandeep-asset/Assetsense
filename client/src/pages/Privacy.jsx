@@ -3,7 +3,7 @@ import React from "react";
 
 const Privacy = () => {
   return (
-    <div className="max-w-5xl mx-auto p-6 mt-30 text-gray-800">
+    <div className="max-w-5xl mx-auto p-6 mt-10 text-gray-800">
       <h1 className="text-3xl font-bold mb-2">Asset Sense</h1>
       <h2 className="text-2xl font-semibold mb-6">Privacy Policy</h2>
       <p className="text-sm text-gray-500 mb-6">

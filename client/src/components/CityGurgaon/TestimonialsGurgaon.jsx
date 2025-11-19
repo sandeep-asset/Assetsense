@@ -218,12 +218,12 @@ const TestimonialsGurgaon = () => {
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/madsign.png"
+                    src="/logos/mads.png"
                     alt="Mad Sign"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/saurabheng.png"
+                    src="/logos/saurabh.png"
                     alt="Saurabh Eng"
                     className="h-16 w-auto object-contain"
                   />

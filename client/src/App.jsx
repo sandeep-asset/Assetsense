@@ -32,6 +32,7 @@ import TermsAndConditions from "./pages/Termandcondition";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OurServices from "./pages/OurServices";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -59,6 +60,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/our-services" element={<OurServices />} />
+             <Route path="*" element={<NotFound/>} />
             <Route
               path="/admin"
               element={

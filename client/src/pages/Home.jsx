@@ -98,13 +98,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-blue-50">
       <header className="relative h-screen md:pb-25 pb-40 md:pt-10 pt-40 min-h-[550px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: `url('/hero-workspace.png')`,
+            backgroundImage: `url('/hero-workspace2.jpg')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -221,12 +221,12 @@ const Home = () => {
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/madsign.png"
+                  src="/logos/mads.png"
                   alt="Mad Sign"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/saurabheng.png"
+                  src="/logos/saurabh.png"
                   alt="Saurabh Eng"
                   className="h-16 w-auto object-contain"
                 />
