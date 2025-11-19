@@ -385,7 +385,12 @@ const SearchOfficePage = () => {
                           {/* Office Image */}
                           <img
                             src={
-                              office.images?.[0] || "/placeholder-office.jpg"
+                              office.images?.[0]
+                                ? office.images[0].replace(
+                                    "/upload/",
+                                    "/upload/f_auto,q_auto:eco,w_400,h_300,c_fill,g_auto/"
+                                  )
+                                : "/placeholder-office.jpg"
                             }
                             alt={office.name}
                             className="w-full md:h-full h-48 sm:h-32 object-cover transition-transform duration-300 rounded-lg"
@@ -452,15 +457,6 @@ const SearchOfficePage = () => {
                                       {office.location.address}
                                     </span>
                                   </div>
-
-                                  {/* Price on mobile in the same row */}
-                                  {/* <div className="flex items-center justify-between sm:justify-start sm:ml-auto mt-1 sm:mt-0">
-                                    <div className="text-blue-600 font-bold text-base sm:text-xl">
-                                      ₹
-                                      {office.pricing?.monthly?.toLocaleString()}
-                                      /year
-                                    </div>
-                                  </div> */}
                                 </div>
                               </div>
                             </div>

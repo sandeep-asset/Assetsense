@@ -42,7 +42,6 @@ const OfficeDetails = () => {
         const response = await axios.get(
           `${backendUrl}/api/offices/slug/${slug}`
         );
-        // const response = await axios.get(`${backendUrl}/api/offices/${id}`);
 
         if (response.data.success) {
           setOffice(response.data.data);
@@ -163,22 +162,12 @@ const OfficeDetails = () => {
           <div className="lg:col-span-2">
             {/* Main Image */}
             <div className="bg-gray-200 rounded-lg overflow-hidden mb-4">
-              {/* <img
-                src={
-                  office.images?.[selectedImage] || "/placeholder-office.jpg"
-                }
-                alt={office.name}
-                className="w-full h-96 object-cover"
-                onError={(e) => {
-                  e.target.src = "/placeholder-office.jpg";
-                }}
-              /> */}
               <img
                 src={
                   office.images?.[selectedImage]
                     ? office.images[selectedImage].replace(
                         "/upload/",
-                        "/upload/f_auto,q_auto:good,w_1400/"
+                        "/upload/f_auto,q_auto:eco,w_1400,h_600,c_fill,g_auto/"
                       )
                     : "/placeholder-office.jpg"
                 }
@@ -203,9 +192,16 @@ const OfficeDetails = () => {
                     }`}
                   >
                     <img
-                      src={image}
+                      src={
+                        image
+                          ? image.replace(
+                              "/upload/",
+                              "/upload/f_auto,q_auto:eco,w_120,h_120,c_fill,g_auto/"
+                            )
+                          : "/placeholder-office.jpg"
+                      }
                       alt={`${office.name} view ${index + 1}`}
-                      className="w-full h-20 object-cover"
+                      className="w-full h-20 object-cover rounded"
                       onError={(e) => {
                         e.target.src = "/placeholder-office.jpg";
                       }}
