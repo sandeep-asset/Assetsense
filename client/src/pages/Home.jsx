@@ -111,38 +111,6 @@ const Home = () => {
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-blue-900/30 to-transparent opacity-90" />
         </div>
-        {/* <div className="absolute inset-0 z-0">
-          <picture>
-           
-            <source
-              media="(max-width: 640px)"
-              srcSet="/heroMobile.jpg"
-              type="image/jpeg"
-            />
-
-            
-            <source
-              media="(min-width: 641px)"
-              srcSet="/heroImage.jpg"
-              type="image/jpeg"
-            />
-
-           
-            <img
-              src="/heroImage.jpg"
-              alt="hero background"
-              className="w-full h-full object-cover"
-              loading="eager"
-              fetchPriority="high"
-              width="1600"
-              height="900"
-            />
-          </picture>
-
-         
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-blue-900/30 to-transparent opacity-90" />
-        </div> */}
 
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 text-center">
