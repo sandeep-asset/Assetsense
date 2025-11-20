@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ModernComparisonSection from "../components/comperison";
-import RelatedOffices from "../components/RelatedOffices";
-import PopupLeadForm from "../components/CityGurgaon/LeadForm";
-import FaqGurgaon from "../components/CityGurgaon/FaqGurgaon";
-import Testimonials from "../components/CityGurgaon/TestimonialsGurgaon";
-import WhyChooseUsSection from "../components/WhychooseUsSection";
+const ModernComparisonSection = lazy(() => import("../components/comperison"));
+const RelatedOffices = lazy(() => import("../components/RelatedOffices"));
+const PopupLeadForm = lazy(() => import("../components/CityGurgaon/LeadForm"));
+const FaqGurgaon = lazy(() => import("../components/CityGurgaon/FaqGurgaon"));
+const Testimonials = lazy(() =>
+  import("../components/CityGurgaon/TestimonialsGurgaon")
+);
+
+const TargetAudience = lazy(() => import("../components/TargetAudience"));
+
 import { FaCheckCircle } from "react-icons/fa";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -17,7 +21,6 @@ import {
   FaWhatsapp,
   FaHandshake,
 } from "react-icons/fa";
-import TargetAudience from "../components/TargetAudience";
 
 const OfficeDetails = () => {
   //Handle Checkout
@@ -575,10 +578,14 @@ const OfficeDetails = () => {
                 >
                   Book Now
                 </button>
-                <PopupLeadForm
-                  isOpen={isFormOpen}
-                  onClose={() => setIsFormOpen(false)}
-                />
+                <Suspense
+                  fallback={<div className="my-6">Loading Form...</div>}
+                >
+                  <PopupLeadForm
+                    isOpen={isFormOpen}
+                    onClose={() => setIsFormOpen(false)}
+                  />
+                </Suspense>
 
                 <div className="flex flex-wrap justify-center items-center gap-3 mt-5">
                   {/* Secure Payment */}
@@ -662,15 +669,18 @@ const OfficeDetails = () => {
         </div>
       </div>
       {office && (
-        <RelatedOffices
-          officeSlug={office.slug}
-          city={office.location.city}
-          type={office.type}
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <RelatedOffices
+            officeSlug={office.slug}
+            city={office.location.city}
+            type={office.type}
+          />
+        </Suspense>
       )}
 
-      <ModernComparisonSection />
-      {/* <WhyChooseUsSection /> */}
+      <Suspense fallback={<div className="my-6">Loading Comparison...</div>}>
+        <ModernComparisonSection />
+      </Suspense>
       {/* Why Choose Us Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
@@ -845,10 +855,16 @@ const OfficeDetails = () => {
       </section>
 
       {/* Client Testimonials Section */}
-      <Testimonials />
-      <TargetAudience />
+      <Suspense fallback={<div className="my-6">Loading Testimonials...</div>}>
+        <Testimonials />
+      </Suspense>
+      <Suspense fallback={<div className="my-6">Loading Audience Info...</div>}>
+        <TargetAudience />
+      </Suspense>
 
-      <FaqGurgaon />
+      <Suspense fallback={<div className="my-6">Loading FAQ...</div>}>
+        <FaqGurgaon />
+      </Suspense>
     </div>
   );
 };

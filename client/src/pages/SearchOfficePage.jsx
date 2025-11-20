@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -15,8 +15,9 @@ import {
   FaCheckCircle,
   FaArrowRight,
 } from "react-icons/fa";
-import ContactForm from "../components/ContactForm";
-import PopupLeadForm from "../components/CityGurgaon/LeadForm";
+const ContactForm = lazy(() => import("../components/ContactForm"));
+
+const PopupLeadForm = lazy(() => import("../components/CityGurgaon/LeadForm"));
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -646,10 +647,12 @@ const SearchOfficePage = () => {
                                   Contact Now
                                 </button>
 
-                                <PopupLeadForm
-                                  isOpen={isFormOpen}
-                                  onClose={() => setIsFormOpen(false)}
-                                />
+                                <Suspense fallback={null}>
+                                  <PopupLeadForm
+                                    isOpen={isFormOpen}
+                                    onClose={() => setIsFormOpen(false)}
+                                  />
+                                </Suspense>
                               </div>
                             </div>
                           </div>
@@ -711,10 +714,12 @@ const SearchOfficePage = () => {
                 </p>
               </div>
               <div className="p-4">
-                <ContactForm
-                  office={selectedOffice}
-                  key={selectedOffice?._id || "general"}
-                />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <ContactForm
+                    office={selectedOffice}
+                    key={selectedOffice?._id || "general"}
+                  />
+                </Suspense>
               </div>
             </div>
 
