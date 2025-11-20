@@ -1,6 +1,6 @@
 import express from "express";
 
-import { admin, protect } from "../middleware/auth.js";
+
 import {
   createOrder,
   // verifyPayment,
@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.post("/create", createOrder);
 
-router.get("/all", protect, admin, getAllOrders);
-router.delete("/:id", protect, admin, deleteOrder); // Fetch all orders (Admin)
-router.get("/:id", protect, admin, getOrderById); // Fetch single order details
+router.get("/all",  getAllOrders);
+router.delete("/:id", deleteOrder); // Fetch all orders (Admin)
+router.get("/:id",  getOrderById); // Fetch single order details
 
 export default router;
