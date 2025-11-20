@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import OfficeCard from "../components/OfficeCard";
-import OfficeListingCTA from "../components/OfficeListingCTA";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import FeaturesGrid from "../components/FeaturesGrid";
+
+import { lazy, Suspense } from "react";
+
+const OfficeCard = lazy(() => import("../components/OfficeCard"));
+const OfficeListingCTA = lazy(() => import("../components/OfficeListingCTA"));
+const FeaturesGrid = lazy(() => import("../components/FeaturesGrid"));
+const PopupLeadForm = lazy(() => import("../components/CityGurgaon/LeadForm"));
+const OfficeFilters = lazy(() => import("../components/Filters"));
 
 import {
   FaSearch,
@@ -22,8 +27,6 @@ import {
   FaCity,
 } from "react-icons/fa";
 
-import PopupLeadForm from "../components/CityGurgaon/LeadForm";
-import OfficeFilters from "../components/Filters";
 import useScrollRestore from "../components/useScrollRestore";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -101,17 +104,15 @@ const Home = () => {
     <div className="min-h-screen  bg-gradient-to-br from-gray-50 to-blue-50">
       <header className="relative h-screen md:pb-25 pb-40 md:pt-10 pt-40 min-h-[550px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
-        
+
         <div className="absolute inset-0 z-0">
           <picture>
-           
             <source
               media="(max-width: 640px)"
               srcSet="/heroMobile.jpg"
               type="image/jpeg"
             />
 
-            
             <source
               media="(min-width: 641px)"
               srcSet="/heroImage.jpg"
@@ -128,7 +129,6 @@ const Home = () => {
             />
           </picture>
 
-         
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-blue-900/30 to-transparent opacity-90" />
         </div>
@@ -179,7 +179,9 @@ const Home = () => {
 
           {/* Filters Row */}
 
-          <OfficeFilters onFilterChange={fetchOffices} />
+          <Suspense fallback={<h1>Loading</h1>}>
+            <OfficeFilters onFilterChange={fetchOffices} />
+          </Suspense>
 
           <PopupLeadForm
             isOpen={isFormOpen}
@@ -311,7 +313,13 @@ const Home = () => {
                     className="transform hover:scale-[1.02] transition-transform duration-300"
                   >
                     <Link key={office._id} to={`/office/${office.slug}`}>
-                      <OfficeCard office={office} />
+                      <Suspense
+                        fallback={
+                          <div className="h-60 bg-gray-200 rounded-xl animate-pulse" />
+                        }
+                      >
+                        <OfficeCard office={office} />
+                      </Suspense>
                     </Link>
                   </div>
                 ))}
@@ -345,7 +353,10 @@ const Home = () => {
               </Link>
             </div>
 
-            <OfficeListingCTA />
+            <Suspense fallback={<h1>Loading</h1>}>
+              <OfficeListingCTA />
+            </Suspense>
+
             {/* Additional Stats Section */}
             <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-8 text-white mb-12">
               <div className="text-center mb-6">
