@@ -245,9 +245,65 @@ export const createOrder = async (req, res) => {
 // };
 
 export const verifyPaymentWebhook = async (req, res) => {
-  console.log("Cashfree test webhook received");
-  return res.status(200).json({ status: "OK" });
+  try {
+    console.log("Raw webhook body:", req.body);
+
+    // Cashfree PG V1 sends data directly in the payload
+    const payload = req.body;
+
+    const cf_order_id =
+      payload?.orderId || payload?.data?.orderId || payload?.data?.order?.order_id;
+
+    const payment_status =
+      payload?.txStatus ||
+      payload?.data?.txStatus ||
+      payload?.data?.payment?.payment_status;
+
+    const cf_payment_id =
+      payload?.referenceId ||
+      payload?.data?.referenceId ||
+      payload?.data?.payment?.cf_payment_id;
+
+    if (!cf_order_id) {
+      console.log("Missing order_id in webhook payload");
+      return res.status(400).send("Missing orderId");
+    }
+
+    console.log("Received Cashfree Webhook:", {
+      cf_order_id,
+      payment_status,
+      cf_payment_id,
+    });
+
+    const updatedOrder = await Order.findOneAndUpdate(
+      { paymentOrderId: cf_order_id },
+      {
+        paymentStatus: payment_status?.toUpperCase(),
+        transactionDate: new Date(),
+        paymentReferenceId: cf_payment_id,
+      },
+      { new: true }
+    );
+
+    if (!updatedOrder) {
+      console.log("Order not found for:", cf_order_id);
+      return res.status(404).send("Order not found");
+    }
+
+    console.log("Order updated successfully:", updatedOrder._id);
+
+    return res.status(200).send("OK"); // MUST return OK only
+  } catch (error) {
+    console.error("Webhook error:", error.message);
+    return res.status(500).send("Server error");
+  }
 };
+
+
+// export const verifyPaymentWebhook = async (req, res) => {
+//   console.log("Cashfree test webhook received");
+//   return res.status(200).json({ status: "OK" });
+// };
 
 // All Orders
 
