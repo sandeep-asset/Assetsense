@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.post("/create", createOrder);
 
-router.get("/all", protect, admin, getAllOrders); // Fetch all orders (Admin)
+router.get("/all", protect, admin, getAllOrders);
+router.delete("/:id", protect, admin, deleteOrder); // Fetch all orders (Admin)
 router.get("/:id", protect, admin, getOrderById); // Fetch single order details
-router.delete("/:id", protect, admin, deleteOrder);
 
 export default router;

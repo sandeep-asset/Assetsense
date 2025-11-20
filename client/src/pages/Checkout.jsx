@@ -15,7 +15,9 @@ const Checkout = () => {
   if (!office) {
     return (
       <div className="max-w-lg mx-auto p-4 bg-white rounded-xl shadow-md text-center">
-        <p className="text-gray-600">Loading checkout details... (no office data found)</p>
+        <p className="text-gray-600">
+          Loading checkout details... (no office data found)
+        </p>
       </div>
     );
   }
@@ -121,7 +123,9 @@ const Checkout = () => {
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
           Secure 2-Step Checkout
         </h1>
-        <p className="text-green-600 text-sm font-medium">🔒 256-bit SSL Encrypted</p>
+        <p className="text-green-600 text-sm font-medium">
+          🔒 256-bit SSL Encrypted
+        </p>
       </div>
 
       {/* Your Order */}
@@ -170,7 +174,8 @@ const Checkout = () => {
 
                   <div className="text-right">
                     <p className="text-gray-700 font-semibold text-xs">
-                      Regular Price: ₹<span className="line-through">{s.regularprice}</span>
+                      Regular Price: ₹
+                      <span className="line-through">{s.regularprice}</span>
                     </p>
                     <p className="text-blue-700 text-xs font-semibold">
                       Asset Sense Price : ₹{s.assetsenseprice}
@@ -258,7 +263,9 @@ const Checkout = () => {
 
       {/* Customer Info */}
       <div className="mb-8">
-        <h3 className="text-lg font-semibold text-gray-800 mb-3">Customer Information</h3>
+        <h3 className="text-lg font-semibold text-gray-800 mb-3">
+          Customer Information
+        </h3>
         <div className="space-y-3">
           <input
             placeholder="Full Name"
@@ -283,10 +290,14 @@ const Checkout = () => {
         onClick={handleCheckout}
         disabled={loading}
         className={`w-full py-4 text-lg font-semibold rounded-lg flex justify-center items-center gap-2 transition-all ${
-          loading ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700 text-white"
+          loading
+            ? "bg-blue-400 cursor-not-allowed"
+            : "bg-blue-600 hover:bg-blue-700 text-white"
         }`}
       >
-        {loading ? "Processing..." : (
+        {loading ? (
+          "Processing..."
+        ) : (
           <>
             Total Payable
             <span className="bg-blue-800 text-white text-sm font-semibold px-3 py-1 rounded-md shadow-sm">
@@ -302,7 +313,9 @@ const Checkout = () => {
           <FaLock className="text-yellow-500" />
           <span>30-day money-back guarantee • Cancel anytime</span>
         </p>
-        <p className="mt-2 text-gray-400">© 2025 Asset Sense Workspaces • Privacy Policy</p>
+        <p className="mt-2 text-gray-400">
+          © 2025 Asset Sense Workspaces • Privacy Policy
+        </p>
       </div>
     </div>
   );

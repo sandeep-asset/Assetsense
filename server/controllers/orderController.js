@@ -180,68 +180,73 @@ export const createOrder = async (req, res) => {
 //   }
 // };
 
+// export const verifyPaymentWebhook = async (req, res) => {
+//   try {
+//     const secret = process.env.CASHFREE_WEBHOOK_SECRET;
+//     const signature = req.headers["x-webhook-signature"];
+//     const payload = JSON.stringify(req.body);
+
+//     // ✅ Verify signature
+//     const expectedSignature = crypto
+//       .createHmac("sha256", secret)
+//       .update(payload)
+//       .digest("base64");
+
+//     if (signature !== expectedSignature) {
+//       console.log("Invalid Cashfree signature");
+//       return res
+//         .status(400)
+//         .json({ success: false, message: "Invalid signature" });
+//     }
+
+//     const event = req.body;
+//     const eventType = event?.type;
+//     if (!["PAYMENT.SUCCESS", "PAYMENT.FAILED"].includes(eventType)) {
+//       console.log("Ignored event:", eventType);
+//       return res.status(200).json({ success: true });
+//     }
+
+//     const cf_order_id = event?.data?.order?.order_id;
+//     const payment_status = event?.data?.payment?.payment_status?.toUpperCase();
+//     const cf_payment_id = event?.data?.payment?.cf_payment_id;
+
+//     if (!cf_order_id) {
+//       console.log("Missing order_id in webhook payload");
+//       return res
+//         .status(400)
+//         .json({ success: false, message: "Missing order_id" });
+//     }
+
+//     console.log("Webhook received:", cf_order_id, payment_status);
+
+//     const updatedOrder = await Order.findOneAndUpdate(
+//       { paymentOrderId: cf_order_id },
+//       {
+//         paymentStatus: payment_status,
+//         transactionDate: new Date(),
+//         paymentReferenceId: cf_payment_id || undefined,
+//       },
+//       { new: true }
+//     );
+
+//     if (!updatedOrder) {
+//       console.log("No matching order found for:", cf_order_id);
+//       return res
+//         .status(404)
+//         .json({ success: false, message: "Order not found" });
+//     }
+
+//     console.log("Order updated:", updatedOrder._id, "→", payment_status);
+//     return res.status(200).json({ success: true });
+//   } catch (error) {
+//     console.error("Webhook error:", error.message);
+//     return res.status(500).json({ success: false, message: "Server error" });
+//   }
+// };
+
 export const verifyPaymentWebhook = async (req, res) => {
-  try {
-    const secret = process.env.CASHFREE_WEBHOOK_SECRET;
-    const signature = req.headers["x-webhook-signature"];
-    const payload = JSON.stringify(req.body);
-
-    // ✅ Verify signature
-    const expectedSignature = crypto
-      .createHmac("sha256", secret)
-      .update(payload)
-      .digest("base64");
-
-    if (signature !== expectedSignature) {
-      console.log("Invalid Cashfree signature");
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid signature" });
-    }
-
-    const event = req.body;
-    const eventType = event?.type;
-    if (!["PAYMENT.SUCCESS", "PAYMENT.FAILED"].includes(eventType)) {
-      console.log("Ignored event:", eventType);
-      return res.status(200).json({ success: true });
-    }
-
-    const cf_order_id = event?.data?.order?.order_id;
-    const payment_status = event?.data?.payment?.payment_status?.toUpperCase();
-    const cf_payment_id = event?.data?.payment?.cf_payment_id;
-
-    if (!cf_order_id) {
-      console.log("Missing order_id in webhook payload");
-      return res
-        .status(400)
-        .json({ success: false, message: "Missing order_id" });
-    }
-
-    console.log("Webhook received:", cf_order_id, payment_status);
-
-    const updatedOrder = await Order.findOneAndUpdate(
-      { paymentOrderId: cf_order_id },
-      {
-        paymentStatus: payment_status,
-        transactionDate: new Date(),
-        paymentReferenceId: cf_payment_id || undefined,
-      },
-      { new: true }
-    );
-
-    if (!updatedOrder) {
-      console.log("No matching order found for:", cf_order_id);
-      return res
-        .status(404)
-        .json({ success: false, message: "Order not found" });
-    }
-
-    console.log("Order updated:", updatedOrder._id, "→", payment_status);
-    return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error("Webhook error:", error.message);
-    return res.status(500).json({ success: false, message: "Server error" });
-  }
+  console.log("Cashfree test webhook received");
+  return res.status(200).json({ status: "OK" });
 };
 
 // All Orders
