@@ -52,6 +52,7 @@ const orderSchema = new mongoose.Schema(
       default: "PENDING",
     },
     paymentOrderId: String,
+    paymentReferenceId: String,
     paymentGateway: { type: String, default: "Cashfree" },
 
     // Metadata

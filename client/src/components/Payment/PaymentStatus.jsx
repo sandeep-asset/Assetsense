@@ -12,9 +12,11 @@ const PaymentStatus = () => {
     const fetchStatus = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/orders/${orderId}`
+          `${
+            import.meta.env.VITE_BACKEND_URL
+          }/api/orders/payment-status?order_id=${orderId}`
         );
-        setStatus(res.data.status || "unknown");
+        setStatus(res.data.status);
       } catch (err) {
         setStatus("error");
       }
@@ -25,7 +27,7 @@ const PaymentStatus = () => {
 
   const renderStatus = () => {
     switch (status) {
-      case "success":
+      case "SUCCESS":
         return (
           <div className="text-center p-8 bg-green-50 border border-green-200 rounded-2xl shadow-md">
             <h1 className="text-3xl font-bold text-green-700 mb-3">
@@ -43,7 +45,7 @@ const PaymentStatus = () => {
           </div>
         );
 
-      case "failed":
+      case "FAILED":
       case "error":
         return (
           <div className="text-center p-8 bg-red-50 border border-red-200 rounded-2xl shadow-md">
@@ -62,7 +64,7 @@ const PaymentStatus = () => {
           </div>
         );
 
-      case "pending":
+      case "PENDING":
         return (
           <div className="text-center p-8 bg-yellow-50 border border-yellow-200 rounded-2xl shadow-md">
             <h1 className="text-3xl font-bold text-yellow-600 mb-3">

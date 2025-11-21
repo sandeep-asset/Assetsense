@@ -15,8 +15,8 @@ const app = express();
 app.use(cors());
 app.post(
   "/api/orders/webhook",
-  express.raw({ type: "application/json" }),
-  verifyPaymentWebhook // 👈 directly attach your controller
+  express.raw({ type: "*/*" }),
+  verifyPaymentWebhook
 );
 
 app.use(express.json());

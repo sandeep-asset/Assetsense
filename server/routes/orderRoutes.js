@@ -13,10 +13,11 @@ import { protect, admin } from "../middleware/auth.js";
 const router = express.Router();
 
 router.post("/create", createOrder);
+router.get("/payment-status", getPaymentStatus);
 
-router.get("/all", getAllOrders);
-router.delete("/:id", deleteOrder); // Fetch all orders (Admin)
-router.get("/:id", getOrderById);
-router.get("/status/:cfOrderId", getPaymentStatus); // Fetch single order details
+router.get("/all", protect, admin, getAllOrders);
+router.delete("/:id", protect, admin, deleteOrder); // Fetch all orders (Admin)
+router.get("/:id", protect, admin, getOrderById);
+// router.get("/payment-status", getPaymentStatus); // Fetch single order details
 
 export default router;
