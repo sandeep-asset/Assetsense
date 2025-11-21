@@ -13,15 +13,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-// app.post(
-//   "/api/orders/webhook",
-//   express.raw({ type: "application/json" }),
-//   verifyPaymentWebhook // 👈 directly attach your controller
-// );
 app.post(
   "/api/orders/webhook",
   express.raw({ type: "application/json" }),
-  verifyPaymentWebhook
+  verifyPaymentWebhook // 👈 directly attach your controller
 );
 
 app.use(express.json());
