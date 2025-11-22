@@ -68,7 +68,6 @@ export const createOrder = async (req, res) => {
 
       user,
       services: selectedServices,
-
       basePrice,
       discountPercent,
       discountedPrice,
@@ -92,6 +91,7 @@ export const createOrder = async (req, res) => {
 
       customer_details: {
         customer_id: `CUST_${Date.now()}`,
+        customer_name: user.name,
         customer_email: user.email,
         customer_phone: user.phone,
       },

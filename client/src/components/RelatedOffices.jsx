@@ -107,23 +107,63 @@ const RelatedOffices = ({ officeSlug, city }) => {
                 </p>
 
                 <div className="mt-4 flex items-center justify-between">
-                  <p className="text-blue-600 font-bold text-sm">
-                    ₹{price}
-                    <span className="text-blue-600 text-xs">
-                      /{isVirtual ? "year" : "month"}
-                    </span>
-                  </p>
+                  {/* PRICE + DISCOUNT LOGIC */}
+                  <div>
+                    {related?.pricing?.discount ? (
+                      (() => {
+                        const regularPrice = Number(price);
+                        const discountPercent = Number(
+                          related.pricing.discount
+                        );
 
+                        const discountedPrice = Math.round(
+                          regularPrice - (regularPrice * discountPercent) / 100
+                        );
+
+                        return (
+                          <>
+                            {/* Discounted Price */}
+                            <p className="text-green-600 font-bold text-sm">
+                              ₹{discountedPrice}
+                              <span className="text-green-600 text-xs">
+                                /{isVirtual ? "year" : "month"}
+                              </span>
+                            </p>
+
+                            {/* Regular Price Strikethrough */}
+                            <p className="text-gray-500 text-xs line-through">
+                              ₹{regularPrice}
+                            </p>
+
+                            {/* Discount Percentage */}
+                            <p className="text-red-500 text-xs font-semibold">
+                              {discountPercent}% OFF
+                            </p>
+                          </>
+                        );
+                      })()
+                    ) : (
+                      // No discount → Show normal price
+                      <p className="text-blue-600 font-bold text-sm">
+                        ₹{price}
+                        <span className="text-blue-600 text-xs">
+                          /{isVirtual ? "year" : "month"}
+                        </span>
+                      </p>
+                    )}
+                  </div>
+
+                  {/* View Details Button */}
                   <span
                     className="
-                      bg-gradient-to-r from-blue-600 to-blue-500 
-                      text-white px-3 py-1 
-                      text-xs rounded-md 
-                      shadow-md 
-                      group-hover:from-blue-700 
-                      group-hover:to-blue-600 
-                      transition-all duration-300
-                    "
+      bg-gradient-to-r from-blue-600 to-blue-500 
+      text-white px-3 py-1 
+      text-xs rounded-md 
+      shadow-md 
+      group-hover:from-blue-700 
+      group-hover:to-blue-600 
+      transition-all duration-300
+    "
                   >
                     View Details
                   </span>
