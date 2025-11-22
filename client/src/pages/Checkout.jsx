@@ -103,7 +103,7 @@ const Checkout = () => {
         return;
       }
 
-      const cashfree = await load({ mode: "sandbox" });
+      const cashfree = await load({ mode: "production" });
       cashfree.checkout({
         paymentSessionId,
         redirectTarget: "_self",
