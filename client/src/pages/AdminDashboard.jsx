@@ -78,6 +78,7 @@ const AdminDashboard = () => {
             Are you sure you want to delete this office?
           </p>
           <p className="text-sm text-gray-500">This action cannot be undone.</p>
+
           <div className="flex justify-end gap-2 mt-2">
             <button
               onClick={() => toast.dismiss(t.id)}
@@ -85,25 +86,31 @@ const AdminDashboard = () => {
             >
               Cancel
             </button>
+
             <button
               onClick={async () => {
                 toast.dismiss(t.id);
+
                 try {
                   const response = await axios.delete(
                     `${backendUrl}/api/offices/${id}`
                   );
 
                   if (response.data.success) {
-                    toast.success("Office Deleted Successfully");
+                    toast.success("Office Deleted Successfully", {
+                      duration: 3000,
+                    });
                     fetchOffices();
                   } else {
                     toast.error(
-                      response.data.message || "Error deleting office"
+                      response.data.message || "Error deleting office",
+                      { duration: 3000 }
                     );
                   }
                 } catch (error) {
-                  console.error("Error deleting office:", error);
-                  toast.error("Error deleting office. Please try again.");
+                  toast.error("Error deleting office. Please try again.", {
+                    duration: 3000,
+                  });
                 }
               }}
               className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600 text-sm"
@@ -114,7 +121,7 @@ const AdminDashboard = () => {
         </div>
       ),
       {
-        duration: Infinity, // stays until user clicks
+        duration: Infinity, // confirmation toast stays
         style: {
           padding: "16px",
           borderRadius: "8px",
