@@ -140,9 +140,6 @@ export const verifyPaymentWebhook = async (req, res) => {
   try {
     const rawBody = req.body;
     const data = JSON.parse(rawBody);
-
-    console.log("Webhook Received:", data);
-
     const orderId = data?.data?.order?.order_id;
     const paymentStatus = data?.data?.payment?.payment_status;
     const paymentRef = data?.data?.payment?.cf_payment_id;
@@ -168,8 +165,6 @@ export const verifyPaymentWebhook = async (req, res) => {
       return res.status(404).json({ error: "Order not found in DB" });
     }
 
-    console.log("✅ Order updated:", updatedOrder._id);
-
     res.status(200).send("Webhook processed");
   } catch (error) {
     console.error("Webhook Error:", error);
@@ -181,23 +176,33 @@ export const verifyPaymentWebhook = async (req, res) => {
 //   try {
 //     const secret = process.env.CASHFREE_API_SECRET;
 
+//     // Required Cashfree headers
 //     const signature = req.headers["x-webhook-signature"];
-//     const payload = JSON.stringify(req.body);
-//     console.log(signature);
+//     const timestamp = req.headers["x-webhook-timestamp"];
 
+//     // IMPORTANT: raw body required
+//     const rawBody = req.rawBody;
+
+//     // Create the string Cashfree wants
+//     const stringToSign = timestamp + rawBody;
+
+//     // Generate expected signature
 //     const expectedSignature = crypto
 //       .createHmac("sha256", secret)
-//       .update(payload)
+//       .update(stringToSign)
 //       .digest("base64");
 
+//     // Compare signatures
 //     if (signature !== expectedSignature) {
-//       console.log("❌ Invalid webhook signature");
-//       return res
-//         .status(400)
-//         .json({ success: false, message: "Invalid signature" });
+//       console.log("❌ Invalid Cashfree webhook signature");
+//       return res.status(400).json({
+//         success: false,
+//         message: "Invalid signature",
+//       });
 //     }
+//     console.log("Webhook Received:", data);
 
-//     console.log("✅ Webhook Signature Verified");
+//     console.log("✅ Webhook Signature Verified",signature);
 
 //     const event = req.body;
 //     const eventType = event?.type; // e.g., PAYMENT_SUCCESS, PAYMENT_FAILED
