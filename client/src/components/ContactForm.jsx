@@ -39,6 +39,11 @@ const ContactForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    window.dataLayer.push({
+      event: "form_submit",
+      form_name: "Contact Form",
+      page: window.location.pathname,
+    });
     e.preventDefault();
 
     try {

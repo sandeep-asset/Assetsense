@@ -33,8 +33,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import OurServices from "./pages/OurServices";
 import NotFound from "./pages/NotFound";
+import useGTM from "./useGTM";
 
 function App() {
+  useGTM();
   return (
     <AuthProvider>
       <div className="min-h-screen bg-gray-50">

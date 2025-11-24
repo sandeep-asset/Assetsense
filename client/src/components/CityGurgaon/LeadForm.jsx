@@ -19,6 +19,11 @@ const PopupLeadForm = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    window.dataLayer.push({
+      event: "form_submit",
+      form_name: "Contact Form",
+      page: window.location.pathname,
+    });
 
     const finalRequirement =
       formData.requirement === "Other"

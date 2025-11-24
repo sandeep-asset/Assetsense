@@ -20,6 +20,11 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    window.dataLayer.push({
+      event: "form_submit",
+      form_name: "Contact Form",
+      page: window.location.pathname,
+    });
 
     const formUrl =
       "https://docs.google.com/forms/d/e/1FAIpQLScNBsQ-3U9I56XIjOQ53yz-kQWJJMXlpdFNtrvuXuJ0xANtyw/formResponse";

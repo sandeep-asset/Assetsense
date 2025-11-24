@@ -95,14 +95,7 @@ const OfficeCard = ({ office, compact = false }) => {
         )}
 
         {/* 🏢 Office Image */}
-        {/* <img
-          src={office.images?.[0] || "/placeholder-office.jpg"}
-          alt={office.name}
-          className="w-full h-32 object-cover rounded-t-xl  transition-transform duration-300"
-          onError={(e) => {
-            e.target.src = "/placeholder-office.jpg";
-          }}
-        /> */}
+
         <img
           src={
             office.images?.[0]
