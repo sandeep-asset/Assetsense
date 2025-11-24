@@ -1,5 +1,5 @@
 import React, { useState, Suspense } from "react";
-import Home from "./Home.jsx";
+const Home = React.lazy(() => import("./Home.jsx"));
 
 // Lazy loaded components
 const Coworking = React.lazy(() =>
@@ -40,9 +40,8 @@ const Gurgaon = () => {
 
   return (
     <div>
-      <Home />
-
       <Suspense fallback={<div>Loading...</div>}>
+        <Home />
         <Coworking />
         <Virtual />
         <PopupLeadForm />
