@@ -17,7 +17,7 @@ export default defineConfig({
         manualChunks: {
           react: ["react", "react-dom"],
           router: ["react-router-dom"],
-          utils: ["lodash", "dayjs"], // remove if you don't use them
+         
         },
       },
     },
