@@ -170,7 +170,7 @@ const OfficeDetails = () => {
                   office.images?.[selectedImage]
                     ? office.images[selectedImage].replace(
                         "/upload/",
-                        "/upload/f_auto,q_auto:eco,w_1400,h_600,c_fill,g_auto/"
+                        "/upload/f_auto,q_auto:eco,w_600,h_500,c_fill,g_auto/"
                       )
                     : "/placeholder-office.jpg"
                 }
