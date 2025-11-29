@@ -109,17 +109,17 @@ const Home = () => {
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet="/heroMobile.jpg"
-              type="image/jpeg"
+              srcSet="/heroMobile.webp"
+              type="image/webp"
             />
 
             <source
               media="(min-width: 641px)"
-              srcSet="/heroImage.jpg"
-              type="image/jpeg"
+              srcSet="/heroImage.webp"
+              type="image/webp"
             />
             <img
-              src="/heroImage.jpg"
+              src="/heroImage.webp"
               alt="hero background"
               className="w-full h-full object-cover"
               loading="eager"
@@ -227,20 +227,20 @@ const Home = () => {
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                    src="/logos/bos.webp"
-                    alt="Andhrola"
-                    className="h-23 w-auto object-contain"
-                  />
-                  <img
-                    src="/logos/sachar.webp"
-                    alt="Andhrola"
-                    className="h-23 w-auto object-contain"
-                  />
-                  <img
-                    src="/logos/sstrader.webp"
-                    alt="Andhrola"
-                    className="h-23 w-auto object-contain"
-                  />
+                  src="/logos/bos.webp"
+                  alt="Andhrola"
+                  className="h-23 w-auto object-contain"
+                />
+                <img
+                  src="/logos/sachar.webp"
+                  alt="Andhrola"
+                  className="h-23 w-auto object-contain"
+                />
+                <img
+                  src="/logos/sstrader.webp"
+                  alt="Andhrola"
+                  className="h-23 w-auto object-contain"
+                />
                 <img
                   src="/logos/hindustanGold.png"
                   alt="HindustanGold"
@@ -256,7 +256,7 @@ const Home = () => {
                   alt="Dream Lingerie"
                   className="h-17 w-auto object-contain"
                 />
-                
+
                 <img
                   src="/logos/saurabh.webp"
                   alt="Saurabh Eng"
