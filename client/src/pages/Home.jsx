@@ -217,52 +217,63 @@ const Home = () => {
             {[...Array(2)].map((_, i) => (
               <div key={i} className="flex gap-12 items-center shrink-0">
                 <img
-                  src="/logos/Alcravo.png"
+                  src="/logos/Alcravo.webp"
                   alt="Alcravo"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/Andhrola.png"
+                  src="/logos/Andhrola.webp"
                   alt="Andhrola"
                   className="h-16 w-auto object-contain"
                 />
+                <img
+                    src="/logos/bos.webp"
+                    alt="Andhrola"
+                    className="h-23 w-auto object-contain"
+                  />
+                  <img
+                    src="/logos/sachar.webp"
+                    alt="Andhrola"
+                    className="h-23 w-auto object-contain"
+                  />
+                  <img
+                    src="/logos/sstrader.webp"
+                    alt="Andhrola"
+                    className="h-23 w-auto object-contain"
+                  />
                 <img
                   src="/logos/hindustanGold.png"
                   alt="HindustanGold"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/pajson.png"
+                  src="/logos/pajson.webp"
                   alt="Pajson"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/dreamlingerie.png"
+                  src="/logos/dreamlingerie.webp"
                   alt="Dream Lingerie"
-                  className="h-16 w-auto object-contain"
+                  className="h-17 w-auto object-contain"
                 />
+                
                 <img
-                  src="/logos/mads.png"
-                  alt="Mad Sign"
-                  className="h-16 w-auto object-contain"
-                />
-                <img
-                  src="/logos/saurabh.png"
+                  src="/logos/saurabh.webp"
                   alt="Saurabh Eng"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/abhiyantri.png"
+                  src="/logos/abhiyantri.webp"
                   alt="Abhiyantri"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/halejo.png"
+                  src="/logos/halejo.webp"
                   alt="Halejo"
                   className="h-16 w-auto object-contain"
                 />
                 <img
-                  src="/logos/codegyan.png"
+                  src="/logos/codegyan.webp"
                   alt="Halejo"
                   className="h-16 w-auto object-contain"
                 />

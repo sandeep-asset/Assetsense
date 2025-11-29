@@ -20,7 +20,7 @@ const FooterNew = () => {
             <div className="space-y-4">
               <div className="text-3xl font-bold mb-2">
                 <a href="/">
-                  <img className="w-35 h-13" src="/aswlogo.png" alt="logo" />
+                  <img className="w-40 h-16" src="/Assetsensefinallogo.webp" alt="logo" />
                 </a>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">

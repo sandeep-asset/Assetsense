@@ -26,8 +26,8 @@ const Navbar = () => {
           <Link to="/" className="flex items-center space-x-2">
             <div className="rounded-lg flex items-center justify-center">
               <img
-                className="w-35 h-19 sm:w-28 sm:h-14 md:w-35 md:h-17 object-contain"
-                src="/aswlogo.png"
+                className="w-35 h-19 sm:w-28 sm:h-14 md:w-40 md:h-20 object-contain"
+                src="/Assetsensefinallogo.webp"
                 alt="Logo"
               />
             </div>

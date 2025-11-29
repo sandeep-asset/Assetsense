@@ -17,7 +17,7 @@ const TestimonialsGurgaon = () => {
       id: 1,
       name: "Ranjeet Sinha",
       position: "Founder, ShipKart",
-      image: "/client/Ranjeet.jpg",
+      image: "/client/Ranjeet.webp",
       content:
         '"Asset Sense provided excellent virtual office space in Gurgaon, helping my startup establish a professional presence without high costs. I saved ₹75,000 annually on office rent."',
       icon: <FaFileInvoiceDollar className="text-green-500" />,
@@ -27,7 +27,7 @@ const TestimonialsGurgaon = () => {
       id: 2,
       name: "Jasleen Kaur",
       position: "CFO, SaaSBee",
-      image: "/client/jusleen.jpg",
+      image: "/client/jusleen.webp",
       content:
         '"I highly recommend Asset Sense for virtual office space Delhi. Our bank asked for one extra doc and support replied within 3 minutes!"',
       icon: <FaClock className="text-blue-500" />,
@@ -37,7 +37,7 @@ const TestimonialsGurgaon = () => {
       id: 3,
       name: "Manish Sharma",
       position: "Director, TechFlow",
-      image: "/client/Manish.jpg",
+      image: "/client/Manish.webp",
       content:
         '"Choosing Asset Sense for a virtual office in Jaipur was a game-changer. They helped us expand to 5 states without physical presence."',
       icon: <FaMapMarkerAlt className="text-red-500" />,
@@ -47,7 +47,7 @@ const TestimonialsGurgaon = () => {
       id: 4,
       name: "Anita Shah",
       position: "CEO, TechInnovate",
-      image: "/client/ankita.jpg",
+      image: "/client/ankita.webp",
       content:
         '"Asset Sense handled our Noida GST registration effortlessly — prestigious address, full compliance, zero stress!"',
       icon: <FaCity className="text-indigo-500" />,
@@ -57,7 +57,7 @@ const TestimonialsGurgaon = () => {
       id: 5,
       name: "Praveen Kumar",
       position: "Director, EcomSolutions",
-      image: "/client/rahul.jpg",
+      image: "/client/rahul.webp",
       content:
         '"Affordable virtual office Ahmedabad, ready documents within hours! Quickest setup we’ve experienced."',
       icon: <FaFileContract className="text-teal-500" />,
@@ -193,12 +193,27 @@ const TestimonialsGurgaon = () => {
               {[...Array(2)].map((_, i) => (
                 <div key={i} className="flex gap-12 items-center shrink-0">
                   <img
-                    src="/logos/Alcravo.png"
+                    src="/logos/Alcravo.webp"
                     alt="Alcravo"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/Andhrola.png"
+                    src="/logos/Andhrola.webp"
+                    alt="Andhrola"
+                    className="h-16 w-auto object-contain"
+                  />
+                  <img
+                    src="/logos/bos.webp"
+                    alt="Andhrola"
+                    className="h-16 w-auto object-contain"
+                  />
+                  <img
+                    src="/logos/sachar.webp"
+                    alt="Andhrola"
+                    className="h-16 w-auto object-contain"
+                  />
+                  <img
+                    src="/logos/sstrader.webp"
                     alt="Andhrola"
                     className="h-16 w-auto object-contain"
                   />
@@ -208,37 +223,33 @@ const TestimonialsGurgaon = () => {
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/pajson.png"
+                    src="/logos/pajson.webp"
                     alt="Pajson"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/dreamlingerie.png"
+                    src="/logos/dreamlingerie.webp"
                     alt="Dream Lingerie"
                     className="h-16 w-auto object-contain"
                   />
+                 
                   <img
-                    src="/logos/mads.png"
-                    alt="Mad Sign"
-                    className="h-16 w-auto object-contain"
-                  />
-                  <img
-                    src="/logos/saurabh.png"
+                    src="/logos/saurabh.webp"
                     alt="Saurabh Eng"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/abhiyantri.png"
+                    src="/logos/abhiyantri.webp"
                     alt="Abhiyantri"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/halejo.png"
+                    src="/logos/halejo.webp"
                     alt="Halejo"
                     className="h-16 w-auto object-contain"
                   />
                   <img
-                    src="/logos/codegyan.png"
+                    src="/logos/codegyan.webp"
                     alt="Halejo"
                     className="h-16 w-auto object-contain"
                   />
