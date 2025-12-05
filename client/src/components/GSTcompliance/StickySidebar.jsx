@@ -1,8 +1,20 @@
 import { useState } from "react";
-import { FaDownload, FaPhoneAlt, FaArrowRight } from "react-icons/fa";
+import { FaDownload, FaArrowRight } from "react-icons/fa";
 
-const StickySidebar = ({ onDownloadClick })=> {
-  const [phone, setPhone] = useState("");
+const StickySidebar = () => {
+  const onDownloadClick = () => {
+    const pdfURL =
+      "https://drive.google.com/uc?export=download&id=1GgCXKp6qI9pF5fNOK58-wfwcElsk8agm";
+    const fileName = "GST-ChecklistFile.pdf";
+
+    const link = document.createElement("a");
+    link.href = pdfURL;
+    link.download = fileName;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="sticky top-8 space-y-6">
@@ -21,7 +33,7 @@ const StickySidebar = ({ onDownloadClick })=> {
           </p>
           <button
             onClick={onDownloadClick}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-white transition-all hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="flex w-full items-center cursor-pointer justify-center gap-2 rounded-lg bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3 text-white transition-all hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
             Get Free PDF
             <FaArrowRight className="h-4 w-4" />
@@ -40,19 +52,12 @@ const StickySidebar = ({ onDownloadClick })=> {
             approval.
           </p>
           <div className="space-y-3">
-            <div className="relative">
-              <FaPhoneAlt className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-              <input
-                type="tel"
-                placeholder="Your phone number"
-                className="w-full rounded-lg border border-gray-300 px-10 py-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
-            </div>
-            <button className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-3 text-white transition-all hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
-              Request Callback
-            </button>
+            <div className="relative"></div>
+            <a href="tel:9907800600" className="w-full block">
+              <button className="w-full rounded-lg cursor-pointer bg-gradient-to-r from-emerald-500 to-teal-600 px-4 py-3 text-white transition-all hover:from-emerald-600 hover:to-teal-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2">
+                Request Callback
+              </button>
+            </a>
           </div>
         </div>
       </div>
@@ -78,5 +83,5 @@ const StickySidebar = ({ onDownloadClick })=> {
       </div>
     </div>
   );
-}
+};
 export default StickySidebar;

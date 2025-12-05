@@ -88,10 +88,10 @@ const FooterNew = () => {
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="/compliance/gst-registration-checklist"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Dedicated Desks
+                    GST Compliance Shield
                   </a>
                 </li>
                 <li>

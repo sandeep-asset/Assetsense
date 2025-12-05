@@ -4,7 +4,7 @@ import { IoDownloadOutline } from "react-icons/io5";
 const HeroSection = () => {
   const onDownloadClick = () => {
     const pdfURL =
-      "https://drive.google.com/uc?export=download&id=1ww-4bY9Ec5RscPWelH-pgOJE-b4auM_V";
+      "https://drive.google.com/uc?export=download&id=1GgCXKp6qI9pF5fNOK58-wfwcElsk8agm";
     const fileName = "GST-ChecklistFile.pdf";
 
     const link = document.createElement("a");
