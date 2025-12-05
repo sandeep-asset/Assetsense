@@ -14,6 +14,7 @@ router.get("/sitemap.xml", async (req, res) => {
     const staticPages = [
       "/",
       "/search",
+      "/gst-registration-checklist",
       "/our-services",
       "/about",
       "/contact",

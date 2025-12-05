@@ -30,6 +30,7 @@ const About = React.lazy(() => import("./pages/About"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const OurServices = React.lazy(() => import("./pages/OurServices"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
+const GstComplience = React.lazy(() => import("./pages/gstComplience"));
 
 // Admin lazy
 const AdminLayout = React.lazy(() =>
@@ -77,6 +78,10 @@ function App() {
               <Route path="/search" element={<SearchOfficePage />} />
               <Route path="/office/:slug" element={<OfficeDetails />} />
               <Route path="/checkout/:slug" element={<Checkout />} />
+              <Route
+                path="/compliance/gst-registration-checklist"
+                element={<GstComplience />}
+              />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/payment-status" element={<PaymentStatus />} />
