@@ -12,6 +12,7 @@ import StickyWatsapp from "./components/stickyWatsapp";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import useGTM from "./useGTM";
+import DocumentGenerator from "./components/AdminComponents/DocumentGenerator";
 
 // Lazy pages
 const Gurgaon = React.lazy(() => import("./pages/Gurgaon"));
@@ -82,6 +83,10 @@ function App() {
                 path="/compliance/gst-registration-checklist"
                 element={<GstComplience />}
               />
+              <Route
+                path="/compliance/documentGenerator"
+                element={<DocumentGenerator />}
+              />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/payment-status" element={<PaymentStatus />} />
@@ -94,6 +99,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/our-services" element={<OurServices />} />
+
               <Route path="*" element={<NotFound />} />
 
               {/* ADMIN ROUTES */}
