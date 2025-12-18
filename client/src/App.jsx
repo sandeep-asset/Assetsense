@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 import ProtectedRoute from "./components/ProtectedRoute";
 import useGTM from "./useGTM";
 import DocumentGenerator from "./components/AdminComponents/DocumentGenerator";
+import StickyChat from "./pages/StickyChat";
 
 // Lazy pages
 const Gurgaon = React.lazy(() => import("./pages/Gurgaon"));
@@ -61,6 +62,7 @@ function App() {
       <div className="min-h-screen bg-gray-50">
         <Navbar />
         <StickyWatsapp />
+        <StickyChat />
         <ScrollToTopButton />
 
         <Toaster />
