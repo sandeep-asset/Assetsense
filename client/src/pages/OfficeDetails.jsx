@@ -5,12 +5,11 @@ const ModernComparisonSection = lazy(() => import("../components/comperison"));
 const RelatedOffices = lazy(() => import("../components/RelatedOffices"));
 const PopupLeadForm = lazy(() => import("../components/CityGurgaon/LeadForm"));
 const FaqGurgaon = lazy(() => import("../components/CityGurgaon/FaqGurgaon"));
+import useSEO from "./DynamicTitle.js";
 const Testimonials = lazy(() =>
   import("../components/CityGurgaon/TestimonialsGurgaon")
 );
-
 const TargetAudience = lazy(() => import("../components/TargetAudience"));
-
 import { FaCheckCircle } from "react-icons/fa";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
@@ -62,6 +61,27 @@ const OfficeDetails = () => {
 
     fetchOfficeDetails();
   }, [id, navigate]);
+
+  //Price calculation
+  const yearlyPrice = Number(office?.pricing?.yearly || 0);
+const discountPercent = Number(office?.pricing?.discount || 0);
+
+const finalPrice =
+  discountPercent > 0
+    ? Math.round(yearlyPrice - (yearlyPrice * discountPercent) / 100)
+    : yearlyPrice;
+
+
+  // Dynamic Title and Meta description for all Pages
+  //  start
+  useSEO({
+    title: `${office?.name || "Office"} | Starting from ₹${finalPrice|| ""} ${office?.location?.city || ""}`,
+    description: office
+      ? `Book ${office.type} in ${office.location.city}. Flexible plans, GST compliant, instant activation, money back in case of rejection.`
+      : "Office details and pricing",
+  });
+
+  //  end
 
   if (loading) {
     return (

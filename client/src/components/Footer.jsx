@@ -64,18 +64,18 @@ const FooterNew = () => {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="/search"
+                    href="https://assetsense.in/office/virtual-office-gurgaon-virtual-office-in-emaar-the-palm-square-golf-course-road-extn-rajesh-pilot-marg"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Coworking Spaces
+                    Affordable Virtual Office in Gurugram
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://workspaces.assetsense.in/virtual-office"
+                    href="https://assetsense.in/office/best-value-virtual-office-in-new-delhi-safdarjung-enclave-pin-110029"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Virtual Office
+                    Affordable Virtual Office in Delhi
                   </a>
                 </li>
                 <li>
@@ -83,33 +83,34 @@ const FooterNew = () => {
                     href="https://workspaces.assetsense.in/virtual-office-in-mumbai"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Virtual Office in Mumbai
+                    Affordable Virtual Office in Mumbai
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/compliance/gst-registration-checklist"
+                    href="https://assetsense.in/office/virtual-office-guwahati-affordable-virtual-office-in-guwahati-assam-pin-781029"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    GST Compliance Shield
+                    Affordable Virtual Office in Guwahati
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="https://assetsense.in/office/virtual-office-jaipur-affordable-virtual-office-in-jaipur"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Day Passes
+                   Affordable Virtual Office in Jaipur
                   </a>
                 </li>
                 <li>
                   <a
-                    href="/"
+                    href="https://assetsense.in/office/affordable-virtual-office-in-neemuch-mp-pin-458441"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Conference Rooms
+                   Affordable Virtual Office in Neemuch
                   </a>
                 </li>
+                
               </ul>
             </div>
 
@@ -132,7 +133,7 @@ const FooterNew = () => {
                     href="/our-services"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Our Services
+                    Our Cities
                   </a>
                 </li>
                 <li>
@@ -140,7 +141,7 @@ const FooterNew = () => {
                     href="#"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Pricing Plans
+                    Virtual office 
                   </a>
                 </li>
                 <li>
@@ -165,6 +166,22 @@ const FooterNew = () => {
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
                     Contact Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/compliance/gst-registration-checklist"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    GST Compliance Shield
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/"
+                    className="text-gray-400 hover:text-white transition-colors text-sm"
+                  >
+                    Conference Rooms
                   </a>
                 </li>
               </ul>
