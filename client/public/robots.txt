@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
+# Block old WordPress Calendar spam
+Disallow: /*?tribe-bar-date=
+Disallow: /*/events/
+Disallow: /wp-json/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Block old WordPress Sitemaps (since you have a new one)
+Disallow: /wp-sitemap*
+
 
 Sitemap: https://api.assetsense.in/sitemap.xml

@@ -14,6 +14,7 @@ import {
   FaChartLine,
   FaHeadset,
 } from "react-icons/fa";
+import useSEO from "./DynamicTitle.js"
 
 const About = () => {
   const navigate = useNavigate();
@@ -104,6 +105,13 @@ const About = () => {
       </span>
     );
   };
+
+  useSEO({
+  title: "About Us | Trusted Virtual Office & Business Workspace Provider",
+  description:
+    "Asset Sense Workspaces is a trusted provider of virtual offices, coworking spaces and GST-compliant business addresses across India since 2012.",
+});
+
 
   return (
     <div>

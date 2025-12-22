@@ -1,6 +1,8 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
+import useSEO from "./DynamicTitle.js";
 import {
+
   FaPhone,
   FaEnvelope,
   FaMapMarkerAlt,
@@ -93,6 +95,12 @@ const Contact = () => {
       action: "#",
     },
   ];
+  useSEO({
+  title: "Contact Us | Virtual Office & Coworking Support | Asset Sense",
+  description:
+    "Contact Asset Sense Workspaces for virtual office, coworking space, GST registration or business support. Our team is ready to assist you.",
+});
+
 
   return (
     <section

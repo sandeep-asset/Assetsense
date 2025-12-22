@@ -7,6 +7,7 @@ import {
   FiMail,
   FiPhone,
   FiMapPin,
+  FiYoutube,
 } from "react-icons/fi";
 
 const FooterNew = () => {
@@ -36,24 +37,28 @@ const FooterNew = () => {
                 <a
                   href="https://www.facebook.com/AssetSenseIndia"
                   className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank"
                 >
                   <FiFacebook className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://x.com/mohan_skills"
+                  href="https://www.youtube.com/@assetsenseworkspaces"
                   className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank"
                 >
-                  <FiTwitter className="w-5 h-5" />
+                  <FiYoutube className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.linkedin.com/company/asset-sense-pvt-ltd"
                   className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank"
                 >
                   <FiLinkedin className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.instagram.com/assetsense1/#"
+                  href="https://www.instagram.com/asset_sense_workspaces"
                   className="text-gray-400 hover:text-white transition-colors"
+                  target="_blank"
                 >
                   <FiInstagram className="w-5 h-5" />
                 </a>
@@ -205,7 +210,7 @@ const FooterNew = () => {
                     <br />
                     Golf Course Road Extn. Sector 66,
                     <br />
-                    Gurgaon, Haryana (INDIA)
+                    Gurgaon- 122102 Haryana (INDIA)
                   </p>
                 </div>
                 <div className="flex items-center space-x-3">

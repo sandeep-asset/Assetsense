@@ -15,6 +15,7 @@ import {
   FaChartLine,
 } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import useSEO from "./DynamicTitle.js"
 
 const OurServices = () => {
   const navigate = useNavigate();
@@ -147,6 +148,12 @@ const OurServices = () => {
       </span>
     );
   };
+
+  useSEO({
+  title: "Services | Virtual Office, Coworking & GST Solutions | Asset Sense",
+  description:
+    "Explore virtual office, coworking spaces, GST registration support & business compliance services across India with Asset Sense Workspaces.",
+});
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white" id="services">
