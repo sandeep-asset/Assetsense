@@ -124,7 +124,7 @@ const Coworking = () => {
             </div>
             <div>
               <div className="text-3xl font-bold mb-2 flex items-center justify-center">
-                4.8
+                4.9
                 <FaStar className="h-5 w-5 text-yellow-300 ml-1" />
               </div>
               <div className="text-blue-100">Average Rating</div>

@@ -4,6 +4,21 @@ import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
 import toast from "react-hot-toast";
 import { FaCheckCircle, FaStar, FaLock } from "react-icons/fa";
+import {
+  FaShieldAlt,
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaHeadset,
+  FaUsers,
+  FaCheck,
+  FaUndo,
+  FaUserCircle,
+} from "react-icons/fa";
+import { SiStripe } from "react-icons/si";
+import { FaCcVisa, FaCcMastercard } from "react-icons/fa";
+import { MdSecurity } from "react-icons/md";
+
+// import { SiRazorpay, SiStripe, SiCashfree, SiPaytm } from "react-icons/si";
 
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
@@ -119,24 +134,111 @@ const Checkout = () => {
   return (
     <div className="max-w-3xl mx-auto p-6 md:p-10 bg-white rounded-2xl shadow-xl border border-gray-100 mt-8 mb-8">
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Secure 2-Step Checkout
-        </h1>
-        <p className="text-green-600 text-sm font-medium">
-          🔒 256-bit SSL Encrypted
-        </p>
-      </div>
+      <div className="flex mb-4 items-center justify-center gap-2 md:gap-4 max-w-3xl mx-auto">
+        {/* Step 1 */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
+            <FaCheckCircle className="w-5 h-5 text-white" />
+          </div>
+          <span className="text-sm font-medium hidden sm:inline">
+            Plan Selection
+          </span>
+        </div>
 
+        {/* Line */}
+        <div className="w-8 md:w-16 h-0.5 bg-blue-600" />
+
+        {/* Step 2 */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+            <span className="text-white font-semibold text-sm">2</span>
+          </div>
+          <span className="text-sm font-medium text-blue-600">Checkout</span>
+        </div>
+
+        {/* Line */}
+        <div className="w-8 md:w-16 h-0.5 bg-gray-300" />
+
+        {/* Step 3 */}
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+            <span className="text-gray-600 font-semibold text-sm">3</span>
+          </div>
+          <span className="text-sm font-medium text-gray-500 hidden sm:inline">
+            Done
+          </span>
+        </div>
+      </div>
+      <hr className="mb-6" />
+      <div className="text-center mb-8 mt-4">
+        <h1 className="text-3xl font-bold text-gray-900">
+          Secure 2-Step Checkout
+          <span className="text-green-600 text-center ml-2 p-2 rounded-lg text-sm border border-green-100 font-medium">
+            🔒 256-bit SSL Encrypted
+          </span>
+        </h1>
+      </div>
+      <div className="shadow-sm border rounded-lg p-4 bg-blue-50 mb-4 border-blue-200">
+        <div className="flex gap-4 items-start">
+          {/* Image */}
+          <img
+            className="w-14 h-14 rounded-full flex-shrink-0"
+            src="/client/ankita.webp"
+            alt="Ankita"
+          />
+
+          {/* Content */}
+          <div className="flex-1">
+            {/* Stars */}
+            <div className="flex gap-1 text-yellow-500 mb-1">
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+              <FaStar />
+            </div>
+
+            {/* Feedback */}
+            <p className="text-sm italic text-gray-700 leading-relaxed">
+              "Asset Sense made getting my GST registration effortless. The
+              entire process was smooth, professional, and I got my registration
+              faster than expected. Highly recommended!"
+            </p>
+
+            {/* Name */}
+            <span className="block mt-1 text-sm font-medium text-gray-800">
+              — Ankita Sharma
+            </span>
+          </div>
+        </div>
+      </div>
       {/* Your Order */}
       <div className="border rounded-xl p-6 mb-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Order</h2>
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+          Your Order- (Select Add-on Services)
+        </h2>
 
-        <div className="flex justify-between mb-3">
-          <p className="text-gray-800 font-medium">
-            {office.type} Plan ({office.location.city} Location)
+        <div className="border-2 border-blue-600 bg-blue-50 rounded-lg p-4 mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          {/* Left: Checked + Plan Info */}
+          <div className="flex items-start sm:items-center gap-3">
+            {/* Checked Icon */}
+            <FaCheckCircle className="text-blue-600 w-4 h-4 flex-shrink-0 mt-1 sm:mt-0" />
+
+            {/* Plan Details */}
+            <div>
+              <p className="text-gray-800 font-medium text-sm sm:text-base">
+                {office.type} Plan ({office.location.city} Location)
+              </p>
+              <span className="text-xs sm:text-sm text-blue-600 font-medium">
+                Selected Plan
+              </span>
+            </div>
+          </div>
+
+          {/* Right: Price */}
+          <p className="font-bold text-gray-900 text-lg sm:text-xl text-right">
+            ₹{discountedPrice}
           </p>
-          <p className="font-semibold text-gray-900">₹{discountedPrice}</p>
         </div>
 
         {/* Upsell Services */}
@@ -193,7 +295,6 @@ const Checkout = () => {
           </div>
         )}
       </div>
-
       {/* Price Summary */}
       <div className="bg-gray-50 border rounded-xl p-6 mb-8">
         <h3 className="text-xl font-semibold text-gray-800 mb-4">
@@ -230,24 +331,32 @@ const Checkout = () => {
             <span className="font-semibold">₹{gstAmount}</span>
           </div>
 
-          <div className="border-t border-dashed pt-3 mt-3 flex justify-between text-lg font-bold text-gray-900">
+          <div className="border-t border-dashed pt-3 mt-3 flex justify-between text-xl font-bold text-gray-900">
             <span>Total Payable:</span>
             <span className="text-blue-700">₹{total}</span>
           </div>
 
           {Number(totalSavings) > 0 && (
-            <p className="text-center mt-3 text-green-700 font-semibold bg-green-50 border border-green-200 py-2 rounded-lg">
-              🎁 Total Savings: ₹{totalSavings}
-            </p>
+            <div className="mt-3 bg-green-50 border border-green-200 rounded-lg p-3 flex items-center gap-3 justify-center sm:justify-start">
+              {/* Savings Badge */}
+              <span className="flex items-center gap-1 bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
+                <FaCheck className="w-3 h-3" />
+                Savings
+              </span>
+
+              {/* Savings Text */}
+              <span className="font-bold text-green-700 text-sm sm:text-base">
+                Total Savings: ₹{totalSavings}
+              </span>
+            </div>
           )}
         </div>
       </div>
-
       {/* ⭐⭐⭐ Dynamic What You're Getting ⭐⭐⭐ */}
       {combinedServices.length > 0 && (
-        <div className="bg-green-50 border border-green-100 rounded-xl p-5 mb-8">
-          <h3 className="text-lg font-semibold text-green-800 mb-3">
-            What You’re Getting
+        <div className="bg-green-50 border border-gray-800 rounded-xl p-5 mb-8">
+          <h3 className="text-xl font-semibold text-green-800 mb-3">
+            Services That You Have Selected
           </h3>
 
           <ul className="space-y-2 text-gray-700 text-sm">
@@ -260,9 +369,17 @@ const Checkout = () => {
           </ul>
         </div>
       )}
-
+      <div className="flex items-center gap-3">
+        <FaUndo className="text-sm text-green-400" />
+        <p className="text-sm text-gray-700">
+          <span className="font-semibold">
+            If your GST application fails, we refund your money{" "}
+          </span>{" "}
+          — No questions asked
+        </p>
+      </div>
       {/* Customer Info */}
-      <div className="mb-8">
+      <div className="mb-8 mt-4">
         <h3 className="text-lg font-semibold text-gray-800 mb-3">
           Customer Information
         </h3>
@@ -284,12 +401,11 @@ const Checkout = () => {
           />
         </div>
       </div>
-
       {/* Pay Button */}
       <button
         onClick={handleCheckout}
         disabled={loading}
-        className={`w-full py-4 text-lg font-semibold rounded-lg flex justify-center items-center gap-2 transition-all ${
+        className={`w-full py-4 text-xl cursor-pointer font-semibold rounded-lg flex justify-center items-center gap-2 transition-all ${
           loading
             ? "bg-blue-400 cursor-not-allowed"
             : "bg-blue-600 hover:bg-blue-700 text-white"
@@ -300,21 +416,102 @@ const Checkout = () => {
         ) : (
           <>
             Total Payable
-            <span className="bg-blue-800 text-white text-sm font-semibold px-3 py-1 rounded-md shadow-sm">
+            <span className=" text-white  text-xl font-semibold px-3 py-1 rounded-md ">
               ₹{total}
             </span>
           </>
         )}
       </button>
+      <div className="mt-2 rounded-lg border border-gray-200 bg-gray-50 p-2 space-y-4">
+        {/* Payment Gateways */}
+        <div className="flex items-center justify-center mt-2">
+          <div className="flex items-center gap-3 px-4 py-0 rounded-full bg-gray-50  shadow-sm">
+            <span className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+              Secured Payments by
+            </span>
+            <img
+              src="/cashfreelogo.png"
+              alt="Cashfree"
+              className="h-8 w-auto"
+            />
+          </div>
+        </div>
 
+        {/* Payment Methods */}
+        <div className="flex flex-wrap items-center gap-4 justify-center">
+          <FaCcVisa className="text-4xl text-blue-400" />
+          <img src="/master.webp" alt="RuPay" className="h-6 w-auto" />
+
+          <img src="/Rupay1.webp" alt="RuPay" className="h-6 w-auto" />
+          <img src="/UPI1.webp" alt="UPI" className="h-6 w-auto" />
+        </div>
+
+        {/* Security Text */}
+        <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+          <FaLock className="text-green-600" />
+          <span>Secured by SSL • PCI-DSS Compliant</span>
+        </div>
+      </div>
       {/* Footer */}
+      <div className="mt-6 bg-white border border-gray-200 rounded-xl p-4 space-y-4">
+        <div className="flex items-center gap-3">
+          <FaShieldAlt className="text-blue-600 text-lg" />
+          <p className="text-sm text-gray-700">
+            <span className="font-semibold">Verified & GST Compliant</span> —
+            100% legally valid documentation
+          </p>
+        </div>
+
+        <div className="flex items-center gap-3">
+          <FaUsers className="text-purple-600 text-lg" />
+          <p className="text-sm text-gray-700">
+            <span className="font-semibold">Trusted by 5,000+ Businesses </span>
+            across India
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-lg p-3">
+          <div className="flex items-center gap-2 text-sm text-gray-700">
+            <a
+              href="tel:9907800600"
+              className="flex items-center gap-2 text-sm text-gray-700 hover:text-blue-600 transition"
+            >
+              <FaPhoneAlt className="text-blue-600" />
+              <span className="font-medium">Need help?</span>
+            </a>
+          </div>
+
+          <a
+            href="https://wa.me/919078006000"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline"
+          >
+            <FaWhatsapp className="text-lg" />
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+
       <div className="text-center text-sm text-gray-500 mt-6">
-        <p className="flex justify-center items-center gap-2">
-          <FaLock className="text-yellow-500" />
-          <span>30-day money-back guarantee • Cancel anytime</span>
-        </p>
-        <p className="mt-2 text-gray-400">
-          © 2025 Asset Sense Workspaces • Privacy Policy
+        <p className="mt-2 flex flex-wrap items-center justify-center gap-2 text-gray-400">
+          © 2025 Asset Sense Workspaces
+          <span className="hidden sm:inline">•</span>
+          <a
+            href="/privacy-policy"
+            className="flex items-center gap-1 hover:text-gray-600 transition"
+          >
+            <FaShieldAlt className="text-xs text-blue-400" />
+            Privacy Policy
+          </a>
+          <span className="hidden sm:inline">•</span>
+          <a
+            href="/refund-policy"
+            className="flex items-center gap-1 hover:text-gray-600 transition"
+          >
+            <FaUndo className="text-xs text-green-400" />
+            Refund Policy
+          </a>
         </p>
       </div>
     </div>

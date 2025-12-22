@@ -35,7 +35,7 @@ const ComparisonTable = () => {
     {
       name: "Affordable Monthly Plans",
       coworking: "Startig at ₹8,000/month",
-      virtual: "Starting at ₹1,200/month",
+      virtual: "Starting at ₹650/month",
     },
   ];
 

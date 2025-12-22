@@ -5,27 +5,27 @@ const TargetAudience = () => {
 
   const audiences = [
     {
-      title: "Start-ups & SMEs",
-      subtitle: "launching in NCR",
+      title: "Start-up India",
+      subtitle: "Apply startup India certificate",
       description:
-        "Perfect for new businesses that need a professional address without the overhead of physical office space.",
+        "Offering compliant virtual office address for registration, drafting, and end-to-end support to startup india certificate apply successfully. ",
       details: [
-        "MCA registration support",
-        "Bank account opening assistance",
-        "Professional business address",
-        "Mail handling and forwarding",
+        "Expert drafting for startup india certificate innovation write-ups.",
+        "End-to-end startup india certificate apply and profile submission.",
+        "स्टार्टअप इंडिया सर्टिफिकेट व जीएसटी रजिस्ट्रेशन हेतु वैध वर्चुअल ऑफिस का पता।",
+        "स्टार्टअप इंडिया सर्टिफिकेट आवेदन व इनोवेशन राइट-अप तैयार करने में विशेषज्ञ सहायता।",
       ],
     },
     {
       title: "Amazon / Flipkart Sellers",
       subtitle: "needing multi-state GST",
       description:
-        "Essential for e-commerce sellers who need GST registration across multiple states.",
+        "Lowest Cost Setup, VPOB/APOB for New Resellers Minimize gst registration fees using the cheapest virtual office solution for your startup documentation.",
       details: [
-        "Multi-state GST registration",
-        "vpob gst",
-        "Return address for customers",
-        "Virtual office space in India (any city)",
+        "Start your Amazon business instantly by securing a compliant virtual office address that meets all government criteria. This is the perfect solution if you are wondering online business ke liye gst number kaise le without renting a physical shop. ",
+        "Amazon strictly requires a professional business address and not a residential one for better approval rates. We provide a registered office address with a valid NOC and Rent Agreement to ensure your seller account is verified smoothly. ",
+        "Don't spend your capital on rent; use the cheapest virtual office solution to get your documentation done. We help you save on gst registration fees and overheads so you can invest more in your inventory. ",
+        "If you want to store inventory in Amazon warehouses in major hubs, use our virtual office for GST registration in Delhi (or other states). This allows you to expand your reach without managing physical offices in every city. ",
       ],
     },
     {
@@ -41,15 +41,15 @@ const TargetAudience = () => {
       ],
     },
     {
-      title: "Global Companies",
-      subtitle: "testing Indian market",
+      title: "Udyog Aadhar (MSME)",
+      subtitle: "Udyam Registration",
       description:
-        "Perfect for international businesses entering the Indian market.",
+        "Asset Sense ki madad se MSME aur Laghu Udyog register karein aur government schemes ka labh lein. ",
       details: [
-        "Market entry support",
-        "Regulatory compliance",
-        "Local presence establishment",
-        "Virtual address for company registration in India",
+        "Service for Loan Eligibility: We select the correct NIC Codes during your Udyam registration to ensure your business qualifies for collateral-free government loans.",
+        "Service for Subsidies: Our compliant Virtual Office Address ensures your MSME application is approved without rejection, unlocking the 50% discount on Trademark & Patent fees.",
+        "Payment Protection Service: Asset Sense से सही Udyog Aadhar (MSME) रजिस्ट्रेशन करवाएं और ग्राहकों से पेमेंट में देरी होने पर कानूनी सुरक्षा (Payment Protection) पाएं।",
+        "Banking Benefit Service: हमारे Bank-Valid Rent Agreement से अपना करंट अकाउंट खुलवाएं और बैंक से ओवरड्राफ्ट (OD) पर ब्याज दर में छूट का लाभ उठाएं।",
       ],
     },
   ];
@@ -153,13 +153,16 @@ const TargetAudience = () => {
   );
 
   return (
-    <section className="py-20 relative bg-[#F9FAFB]">
+    <section id="startups" className="py-25 relative bg-[var(--color-primary)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            Is This For You?
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--color-heading)]">
+            Is This For{" "}
+            <span className="text-[var(--color-important)]">
+              Your Business ?
+            </span>
           </h2>
-          <p className="text-xl text-gray-black max-w-2xl mx-auto">
+          <p className="text-md font-semibold text-[var(--color-subheading)] max-w-2xl mx-auto">
             Perfect for businesses of all sizes looking for professional
             presence without the overhead
           </p>
@@ -172,7 +175,7 @@ const TargetAudience = () => {
             return (
               <div
                 key={index}
-                className="border border-gray-300 rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+                className="border border-[var(--color-secondary)] rounded-xl overflow-hidden bg-[var(--color-secondary)] shadow-sm hover:shadow-md transition-shadow"
               >
                 <div
                   className="p-6 cursor-pointer group"
@@ -180,15 +183,15 @@ const TargetAudience = () => {
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:bg-blue-100 transition-colors">
+                      <div className="w-12 h-12 bg-[var(--color-primary)] rounded-xl flex items-center justify-center group-hover:bg-blue-100 transition-colors">
                         {iconComponents[index]}
                       </div>
 
                       <div className="text-left">
-                        <h3 className="font-semibold text-lg text-black">
+                        <h3 className="font-semibold text-lg text-[var(--color-heading)]">
                           {audience.title}
                         </h3>
-                        <p className="text-sm text-black">
+                        <p className="text-sm text-[var(--color-subheading)]">
                           {audience.subtitle}
                         </p>
                       </div>
@@ -197,24 +200,24 @@ const TargetAudience = () => {
                     <ChevronDown isOpen={isOpen} />
                   </div>
 
-                  <p className="text-black mt-4 text-left">
+                  <p className="text-[var(--color-description)] mt-4 text-left">
                     {audience.description}
                   </p>
-                  <button className="hover:bg-[#49925b] text-black bg-gray-200 cursor-pointer mt-3 hover:text-gray-100 px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-lg font-semibold text-base sm:text-sm transition w-full sm:w-auto">
+                  <button className="hover:bg-[#49925b] text-gray-900 bg-gray-300 cursor-pointer mt-3 hover:text-gray-100 px-3 py-1.5 sm:px-4 sm:py-1.5 rounded-lg font-semibold text-base sm:text-sm transition w-full sm:w-auto">
                     [See Benefits Below] ↓
                   </button>
                 </div>
 
                 {isOpen && (
                   <div className="bg-[#fff] border-t border-blue-100 p-4">
-                    <ul className="space-y-2">
+                    <ul className="space-y-1">
                       {audience.details.map((detail, detailIndex) => (
                         <li
                           key={detailIndex}
-                          className="flex items-center gap-2 text-sm text-black"
+                          className="flex items-start gap-4 text-sm text-gray-600"
                         >
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                          {detail}
+                          <div className="w-2 h-2 bg-green-500 rounded-full shrink-0 mt-2"></div>
+                          <span>{detail}</span>
                         </li>
                       ))}
                     </ul>
@@ -224,6 +227,16 @@ const TargetAudience = () => {
             );
           })}
         </div>
+      </div>
+      <div className="items-center flex mt-10 justify-center">
+        <a
+          href="https://assetsense.in/"
+          target="_blank" // opens in new tab (optional)
+          rel="noopener noreferrer"
+          className="bg-blue-600 text-gray-100 text-lg px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:from-[#267985] hover:to-green-600 transform hover:-translate-y-1"
+        >
+          Visit Main Website
+        </a>
       </div>
     </section>
   );

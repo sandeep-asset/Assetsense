@@ -5,7 +5,7 @@ import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 import slugify from "slugify";
-import mongoose from "mongoose"; // ✅ Needed for ID validation
+import mongoose from "mongoose"; // Needed for ID validation
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ const upload = multer({
   },
 });
 
-// ✅ Create Office
+// Create Office
 export const createOffice = async (req, res) => {
   try {
     const officeData = req.body.data ? JSON.parse(req.body.data) : req.body;
@@ -85,7 +85,7 @@ export const createOffice = async (req, res) => {
       );
     }
 
-    // ✅ Generate unique slug
+    //  Generate unique slug
     const baseSlug = slugify(
       `${officeData.type}-${officeData.location.city}-${officeData.name}`,
       { lower: true, strict: true }
@@ -96,7 +96,7 @@ export const createOffice = async (req, res) => {
       uniqueSlug = `${baseSlug}-${counter++}`;
     }
 
-    // ✅ Branch code
+    // Branch code
     const branchCode = `${officeData.location.city
       .slice(0, 3)
       .toUpperCase()}-${Date.now().toString().slice(-4)}`;
@@ -156,7 +156,7 @@ export const createOffice = async (req, res) => {
   }
 };
 
-// ✅ Get All Offices
+//  Get All Offices
 export const getAllOffice = async (req, res) => {
   try {
     const { type, city, page = 1, limit = 10 } = req.query;
@@ -186,7 +186,7 @@ export const getAllOffice = async (req, res) => {
   }
 };
 
-// ✅ Get Office by Slug (or ID fallback)
+// Get Office by Slug (or ID fallback)
 export const getOfficeById = async (req, res) => {
   try {
     const idOrSlug = req.params.id || req.params.slug;
@@ -211,7 +211,7 @@ export const getOfficeById = async (req, res) => {
   }
 };
 
-// ✅ Update Office
+//  Update Office
 export const updateOffice = async (req, res) => {
   try {
     let officeData = req.body.data ? JSON.parse(req.body.data) : req.body;
@@ -307,7 +307,7 @@ export const updateOffice = async (req, res) => {
   }
 };
 
-// ✅ Delete Office
+// Delete Office
 export const deleteOfficeById = async (req, res) => {
   try {
     const office = await Office.findById(req.params.id);
@@ -324,12 +324,12 @@ export const deleteOfficeById = async (req, res) => {
   }
 };
 
-// ✅ Related Offices by Slug or ID
+//  Related Offices by Slug or ID
 export const getRelatedOffices = async (req, res) => {
   try {
     const { slug } = req.params;
 
-    // ✅ 1. Find main office by slug
+    //  1. Find main office by slug
     const mainOffice = await Office.findOne({ slug });
 
     if (!mainOffice) {
@@ -338,7 +338,7 @@ export const getRelatedOffices = async (req, res) => {
         .json({ success: false, message: "Main office not found" });
     }
 
-    // ✅ 2. Find related offices in same city and type
+    //  2. Find related offices in same city and type
     const relatedOffices = await Office.find({
       _id: { $ne: mainOffice._id },
       "location.city": mainOffice.location.city,
@@ -352,7 +352,7 @@ export const getRelatedOffices = async (req, res) => {
   }
 };
 
-// ✅ Search Offices
+//  Search Offices
 export const searchOffices = async (req, res) => {
   try {
     const { query } = req.query;
@@ -429,7 +429,7 @@ export const getOfficeFilters = async (req, res) => {
   }
 };
 
-// ✅ SEARCH / FILTER OFFICES
+//  SEARCH / FILTER OFFICES
 export const searchOfficesfilter = async (req, res) => {
   try {
     const { query, type, city, minPrice, maxPrice } = req.query;
@@ -454,7 +454,7 @@ export const searchOfficesfilter = async (req, res) => {
       if (maxPrice) filter["pricing.monthly"].$lte = Number(maxPrice);
     }
 
-    // ✅ Fetch all matching offices with all fields
+    //  Fetch all matching offices with all fields
     const offices = await Office.find(filter).sort({ createdAt: -1 });
 
     res.status(200).json({
@@ -467,4 +467,24 @@ export const searchOfficesfilter = async (req, res) => {
   }
 };
 
-// Get Featured Offices for Gallery
+// Toggle office Visibility
+// PATCH /api/admin/offices/:id/status
+// export const toggleOfficeStatus = async (req, res) => {
+//   try {
+//     const office = await Office.findById(req.params.id);
+
+//     if (!office) {
+//       return res.status(404).json({ message: "Office not found" });
+//     }
+
+//     office.isActive = !office.isActive;
+//     await office.save();
+
+//     res.json({
+//       message: "Office visibility updated",
+//       isActive: office.isActive,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ message: "Server error" });
+//   }
+// };

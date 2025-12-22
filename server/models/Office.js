@@ -25,6 +25,10 @@ const officeSchema = new mongoose.Schema(
         trim: true,
       },
     },
+    isActive: {
+      type: Boolean,
+      default: true, // show by default
+    },
     type: {
       type: String,
       enum: ["Virtual Office", "Coworking Space", "Virtual and Coworking"],

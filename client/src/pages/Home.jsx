@@ -88,7 +88,7 @@ const Home = () => {
     },
     {
       icon: FaUsers,
-      value: "10K+",
+      value: "5K+",
       label: "Happy Clients",
       description: "Growing businesses",
     },
@@ -160,7 +160,7 @@ const Home = () => {
               <span className="text-xs">GST/MCA Approved</span>
             </div>
             <div className="flex items-center space-x-1 bg-blue-100 text-blue-800 px-1 py-1 rounded-full">
-              <span className="text-xs">1500+ Clients</span>
+              <span className="text-xs">5000+ Clients</span>
             </div>
           </div>
           {/* Headline */}

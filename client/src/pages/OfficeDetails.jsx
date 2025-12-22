@@ -20,6 +20,9 @@ import {
   FaWhatsapp,
   FaHandshake,
 } from "react-icons/fa";
+const FloatingLeadButton = lazy(() =>
+  import("../components/CityGurgaon/FloatingBookButton.jsx")
+);
 
 const OfficeDetails = () => {
   //Handle Checkout
@@ -37,6 +40,7 @@ const OfficeDetails = () => {
   const [office, setOffice] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showFullDescription, setShowFullDescription] = useState(false);
 
   useEffect(() => {
     const fetchOfficeDetails = async () => {
@@ -64,18 +68,19 @@ const OfficeDetails = () => {
 
   //Price calculation
   const yearlyPrice = Number(office?.pricing?.yearly || 0);
-const discountPercent = Number(office?.pricing?.discount || 0);
+  const discountPercent = Number(office?.pricing?.discount || 0);
 
-const finalPrice =
-  discountPercent > 0
-    ? Math.round(yearlyPrice - (yearlyPrice * discountPercent) / 100)
-    : yearlyPrice;
-
+  const finalPrice =
+    discountPercent > 0
+      ? Math.round(yearlyPrice - (yearlyPrice * discountPercent) / 100)
+      : yearlyPrice;
 
   // Dynamic Title and Meta description for all Pages
   //  start
   useSEO({
-    title: `${office?.name || "Office"} | Starting from ₹${finalPrice|| ""} ${office?.location?.city || ""}`,
+    title: `${office?.name || "Office"} | Starting from ₹${finalPrice || ""} ${
+      office?.location?.city || ""
+    }`,
     description: office
       ? `Book ${office.type} in ${office.location.city}. Flexible plans, GST compliant, instant activation, money back in case of rejection.`
       : "Office details and pricing",
@@ -108,6 +113,24 @@ const finalPrice =
       </div>
     );
   }
+
+  const descriptionPoints = office.description
+    ? office.description
+        .split(";")
+        .map((point) => point.trim())
+        .filter(Boolean)
+    : [
+        `A beautiful ${office.type.toLowerCase()} located in the heart of ${
+          office.location.city
+        }`,
+        "Perfect for professionals",
+        "Modern amenities",
+      ];
+
+  // Mobile-friendly limit (you can change 3 → 4 if you want)
+  const visiblePoints = showFullDescription
+    ? descriptionPoints
+    : descriptionPoints.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-white">
@@ -251,13 +274,24 @@ const finalPrice =
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">
                 About This Space
               </h2>
-              <p className="text-gray-700 leading-relaxed">
-                {office.description ||
-                  `A beautiful ${office.type.toLowerCase()} located in the heart of ${
-                    office.location.city
-                  }. Perfect for professionals looking for a productive workspace with modern amenities.`}
-              </p>
+
+              <ul className="list-disc pl-4 space-y-2 text-gray-900 leading-relaxed">
+                {visiblePoints.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
+
+              {/* Read More / Read Less Button */}
+              {descriptionPoints.length > 3 && (
+                <button
+                  onClick={() => setShowFullDescription(!showFullDescription)}
+                  className="mt-4 text-blue-600 font-semibold text-sm hover:text-blue-700 transition-all"
+                >
+                  {showFullDescription ? "Read less ▲" : "Read more ..."}
+                </button>
+              )}
             </div>
+
             {/*Start of  Available Services */}
 
             {office.services && office.services.length > 0 && (
@@ -701,6 +735,7 @@ const finalPrice =
       <Suspense fallback={<div className="my-6">Loading Comparison...</div>}>
         <ModernComparisonSection />
       </Suspense>
+      <FloatingLeadButton />
       {/* Why Choose Us Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">

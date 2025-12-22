@@ -95,7 +95,7 @@ const TestimonialsGurgaon = () => {
         {/* Heading */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Why 10k+ Businesses Trust{" "}
+            Why 5k+ Businesses Trust{" "}
             <span className="text-blue-600">Asset Sense</span>
           </h2>
           <p className="text-lg text-gray-600">
@@ -174,10 +174,12 @@ const TestimonialsGurgaon = () => {
         {/* CTA */}
         <div className="text-center mt-10">
           <a
-            href="#contact"
+            href="https://www.google.com/maps/place/Asset+Sense+Workspaces/@28.4022422,77.0507031,17z/data=!4m16!1m9!3m8!1s0x390d236820495cc1:0x3bc02b2839b577f8!2sAsset+Sense+Workspaces!8m2!3d28.4022422!4d77.0507031!9m1!1b1!16s%2Fg%2F11ydwv2hjq!3m5!1s0x390d236820495cc1:0x3bc02b2839b577f8!8m2!3d28.4022422!4d77.0507031!16s%2Fg%2F11ydwv2hjq?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoKLDEwMDc5MjA2OUgBUAM%3D
+
+"
             className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-full font-semibold shadow-md hover:bg-blue-700 transition"
           >
-            Read 300+ Google Reviews <FaArrowRight className="ml-2" />
+            Read Google Reviews <FaArrowRight className="ml-2" />
           </a>
         </div>
 
@@ -232,7 +234,7 @@ const TestimonialsGurgaon = () => {
                     alt="Dream Lingerie"
                     className="h-16 w-auto object-contain"
                   />
-                 
+
                   <img
                     src="/logos/saurabh.webp"
                     alt="Saurabh Eng"

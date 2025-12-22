@@ -20,7 +20,11 @@ const FooterNew = () => {
             <div className="space-y-4">
               <div className="text-3xl font-bold mb-2">
                 <a href="/">
-                  <img className="w-40 h-16" src="/Assetsensefinallogo.webp" alt="logo" />
+                  <img
+                    className="w-40 h-16"
+                    src="/Assetsensefinallogo.webp"
+                    alt="logo"
+                  />
                 </a>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
@@ -61,7 +65,7 @@ const FooterNew = () => {
               <h3 className="text-lg font-semibold mb-4 text-white">
                 Our Services
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-0.5">
                 <li>
                   <a
                     href="https://assetsense.in/office/virtual-office-gurgaon-virtual-office-in-emaar-the-palm-square-golf-course-road-extn-rajesh-pilot-marg"
@@ -99,7 +103,7 @@ const FooterNew = () => {
                     href="https://assetsense.in/office/virtual-office-jaipur-affordable-virtual-office-in-jaipur"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                   Affordable Virtual Office in Jaipur
+                    Affordable Virtual Office in Jaipur
                   </a>
                 </li>
                 <li>
@@ -107,10 +111,9 @@ const FooterNew = () => {
                     href="https://assetsense.in/office/affordable-virtual-office-in-neemuch-mp-pin-458441"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                   Affordable Virtual Office in Neemuch
+                    Affordable Virtual Office in Neemuch
                   </a>
                 </li>
-                
               </ul>
             </div>
 
@@ -119,7 +122,7 @@ const FooterNew = () => {
               <h3 className="text-lg font-semibold mb-4 text-white">
                 Quick Links
               </h3>
-              <ul className="space-y-3">
+              <ul className="space-y-0.5">
                 <li>
                   <a
                     href="/about"
@@ -133,7 +136,7 @@ const FooterNew = () => {
                     href="/our-services"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Our Cities
+                    Our Services
                   </a>
                 </li>
                 <li>
@@ -141,7 +144,7 @@ const FooterNew = () => {
                     href="#"
                     className="text-gray-400 hover:text-white transition-colors text-sm"
                   >
-                    Virtual office 
+                    Virtual office
                   </a>
                 </li>
                 <li>
