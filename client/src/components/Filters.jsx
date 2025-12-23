@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import {
   FaBuilding,
@@ -39,6 +39,7 @@ const predefinedPriceRanges = {
 };
 
 const OfficeFilters = ({ onFilterChange }) => {
+  const cityDropdownRef = useRef(null);
   const [filters, setFilters] = useState({
     type: "",
     city: "",
@@ -58,22 +59,25 @@ const OfficeFilters = ({ onFilterChange }) => {
   const [isSticky, setIsSticky] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [cityQuery, setCityQuery] = useState("");
-  const [typeQuery, setTypeQuery] = useState("");
-  const [showCityDropdown, setShowCityDropdown] = useState(false);
-  const [showTypeDropdown, setShowTypeDropdown] = useState(false);
 
   const [dynamicPriceRanges, setDynamicPriceRanges] = useState(
     predefinedPriceRanges["Coworking Space"]
   );
 
-  // const predefinedPriceRanges = [
-  //   { label: "Price Per Month", min: "", max: "" },
-  //   { label: "₹0 - ₹10,00", min: 0, max: 9999 },
-  //   { label: "₹10,00 - ₹5,000", min: 10000, max: 14999 },
-  //   { label: "₹15,000 - ₹20,000", min: 15000, max: 19999 },
-  //   { label: "₹20,000+", min: 20000, max: "" },
-  // ];
+  // closeCityDropdownOnClickOutside
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        cityDropdownRef.current &&
+        !cityDropdownRef.current.contains(event.target)
+      ) {
+        setCityOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
 
   // ✅ Fetch filter options
   useEffect(() => {
@@ -165,13 +169,14 @@ const OfficeFilters = ({ onFilterChange }) => {
     setFilters(cleared);
     setTempFilters(clearedTemp);
     if (onFilterChange) onFilterChange(cleared);
-    setCityQuery("");
-    setTypeQuery("");
 
     toast.success("Filters reset — showing all offices.", {
       duration: 2500,
     });
   };
+
+  const [cityOpen, setCityOpen] = useState(false);
+  const [citySearch, setCitySearch] = useState("");
 
   return (
     <div
@@ -206,84 +211,96 @@ const OfficeFilters = ({ onFilterChange }) => {
           {/* === Row 1: Type, City, Price === */}
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 w-full">
             {/* Type */}
-            <div className="flex-1 min-w-[90px] relative">
-              <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex gap-1">
+            <div className="flex-1 min-w-[90px]">
+              <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex  gap-1">
                 <FaBuilding className="text-blue-400 text-[10px]" />
                 Office Type
               </label>
-
-              <input
-                type="text"
-                placeholder="Type or Select office..."
-                value={typeQuery}
-                onChange={(e) => {
-                  setTypeQuery(e.target.value);
-                  setShowTypeDropdown(true);
-                }}
-                onFocus={() => setShowTypeDropdown(true)}
-                className="w-full p-2 bg-white/20 border border-white/30 cursor-pointer rounded-md text-[11px] sm:text-xs text-white placeholder-gray-300"
-              />
-
-              {showTypeDropdown && (
-                <div className="absolute z-50 mt-1 w-full bg-white rounded-md shadow-lg max-h-40 overflow-auto">
-                  {filterOptions.officeTypes
-                    .filter((type) =>
-                      type.toLowerCase().includes(typeQuery.toLowerCase())
-                    )
-                    .map((type) => (
-                      <div
-                        key={type}
-                        onClick={() => {
-                          setTempFilters((prev) => ({ ...prev, type }));
-                          setTypeQuery(type);
-                          setShowTypeDropdown(false);
-                        }}
-                        className="px-3 py-2 text-sm cursor-pointer hover:bg-blue-100 text-gray-800"
-                      >
-                        {type}
-                      </div>
-                    ))}
-                </div>
-              )}
+              <select
+                value={tempFilters.type}
+                onChange={(e) =>
+                  setTempFilters((prev) => ({ ...prev, type: e.target.value }))
+                }
+                className="w-full p-2 bg-white/20 border border-white/30 rounded-md focus:border-blue-400 focus:ring-1 focus:ring-blue-300 text-[11px] sm:text-xs text-white"
+              >
+                <option className="text-black" value="">
+                  All
+                </option>
+                {filterOptions.officeTypes.map((type) => (
+                  <option key={type} value={type} className="text-black">
+                    {type}
+                  </option>
+                ))}
+              </select>
             </div>
 
+            {/* City */}
             {/* City */}
             <div className="flex-1 min-w-[90px] relative">
               <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex items-center gap-1">
                 <FaMapMarkerAlt className="text-red-400 text-[10px]" /> City
               </label>
 
-              <input
-                type="text"
-                placeholder="Type or Select city..."
-                value={cityQuery}
-                onChange={(e) => {
-                  setCityQuery(e.target.value);
-                  setShowCityDropdown(true);
-                }}
-                onFocus={() => setShowCityDropdown(true)}
-                className="w-full p-2 bg-white/20 border border-white/30 cursor-pointer rounded-md text-[11px] sm:text-xs text-white placeholder-gray-300"
-              />
+              {/* Select Box */}
+              <button
+                type="button"
+                onClick={() => setCityOpen((prev) => !prev)}
+                className="w-full p-2 bg-white/20 border border-white/30 rounded-md text-left text-[11px] sm:text-xs text-white"
+              >
+                {tempFilters.city || "All Cities"}
+              </button>
 
-              {showCityDropdown && (
-                <div className="absolute left-0 top-full z-50 mt-1 w-full bg-white rounded-md shadow-lg max-h-40 overflow-auto">
-                  {filterOptions.cities
-                    .filter((city) =>
-                      city.toLowerCase().includes(cityQuery.toLowerCase())
-                    )
-                    .map((city) => (
-                      <div
-                        key={city}
-                        onClick={() => {
-                          setTempFilters((prev) => ({ ...prev, city }));
-                          setCityQuery(city);
-                          setShowCityDropdown(false);
-                        }}
-                        className="px-3 py-2 text-sm justify-start cursor-pointer hover:bg-green-100 text-gray-800"
-                      >
-                        {city}
-                      </div>
-                    ))}
+              {/* Dropdown */}
+              {cityOpen && (
+                <div className="w-[40vw]  absolute z-50 mt-1 md:w-full bg-white rounded-md shadow-lg border border-gray-200">
+                  {/* Search Input */}
+                  <input
+                    type="text"
+                    placeholder="Type city..."
+                    value={citySearch}
+                    onChange={(e) => setCitySearch(e.target.value)}
+                    className="w-full text-black p-2 border-b text-sm outline-none"
+                  />
+
+                  {/* City List */}
+                  <ul className="max-h-40 overflow-y-auto">
+                    <li
+                      className="p-2 text-sm text-left text-black cursor-pointer hover:bg-gray-100"
+                      onClick={() => {
+                        setTempFilters((prev) => ({ ...prev, city: "" }));
+                        setCityOpen(false);
+                        setCitySearch("");
+                      }}
+                    >
+                      All
+                    </li>
+
+                    {filterOptions.cities
+                      .filter((city) =>
+                        city.toLowerCase().includes(citySearch.toLowerCase())
+                      )
+                      .map((city) => (
+                        <li
+                          key={city}
+                          className="p-2 text-gray-800 text-sm text-left cursor-pointer hover:bg-gray-100"
+                          onClick={() => {
+                            setTempFilters((prev) => ({ ...prev, city }));
+                            setCityOpen(false);
+                            setCitySearch("");
+                          }}
+                        >
+                          {city}
+                        </li>
+                      ))}
+
+                    {filterOptions.cities.filter((city) =>
+                      city.toLowerCase().includes(citySearch.toLowerCase())
+                    ).length === 0 && (
+                      <li className="p-2 text-xs text-gray-400">
+                        No city found
+                      </li>
+                    )}
+                  </ul>
                 </div>
               )}
             </div>
