@@ -67,16 +67,25 @@ const OfficeDetails = () => {
   }, [id, navigate]);
 
   //Price calculation
+  // Tiitle dynamic
+  const officeType = office?.type?.toLowerCase();
+
   const yearlyPrice = Number(office?.pricing?.yearly || 0);
+  const monthlyPrice = Number(office?.pricing?.monthly || 0);
   const discountPercent = Number(office?.pricing?.discount || 0);
 
-  const finalPrice =
-    discountPercent > 0
-      ? Math.round(yearlyPrice - (yearlyPrice * discountPercent) / 100)
-      : yearlyPrice;
+  // helper to apply discount
+  const applyDiscount = (price, discount) =>
+    discount > 0 ? Math.round(price - (price * discount) / 100) : price;
 
-  // Dynamic Title and Meta description for all Pages
-  //  start
+  // decide final price based on office type
+  const finalPrice =
+    officeType === "virtual office"
+      ? applyDiscount(yearlyPrice, discountPercent)
+      : officeType === "coworking space"
+      ? applyDiscount(monthlyPrice, discountPercent)
+      : 0;
+
   useSEO({
     title: `${office?.name || "Office"} | Starting from ₹${finalPrice || ""} ${
       office?.location?.city || ""
@@ -627,7 +636,6 @@ const OfficeDetails = () => {
                 </div>
 
                 <button
-                  
                   onClick={handleBookNow}
                   className="w-full bg-blue-600 text-white cursor-pointer py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
                 >

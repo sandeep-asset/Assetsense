@@ -282,6 +282,7 @@ const OfficeCard = ({ office, compact = false }) => {
           </div>
 
           <Link
+           
             to={`/office/${office.slug}`}
             className="flex items-center gap-1 bg-blue-500 text-white px-3 py-2 rounded-lg hover:bg-blue-600 transition-colors font-semibold text-xs group/btn"
           >
