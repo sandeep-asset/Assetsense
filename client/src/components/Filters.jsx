@@ -236,7 +236,7 @@ const OfficeFilters = ({ onFilterChange }) => {
 
             {/* City */}
             {/* City */}
-            <div className="flex-1 min-w-[90px] relative">
+            <div ref={cityDropdownRef} className="flex-1 min-w-[90px] relative">
               <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex items-center gap-1">
                 <FaMapMarkerAlt className="text-red-400 text-[10px]" /> City
               </label>
@@ -256,7 +256,7 @@ const OfficeFilters = ({ onFilterChange }) => {
                   {/* Search Input */}
                   <input
                     type="text"
-                    placeholder="Type city..."
+                    placeholder="Type or Select city..."
                     value={citySearch}
                     onChange={(e) => setCitySearch(e.target.value)}
                     className="w-full text-black p-2 border-b text-sm outline-none"

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
+import React, { lazy, Suspense, useState,useRef, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -167,6 +167,20 @@ const SearchOfficePage = () => {
     }
   };
 
+  const [cityOpen, setCityOpen] = useState(false);
+  const [citySearch, setCitySearch] = useState("");
+  const cityRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (cityRef.current && !cityRef.current.contains(e.target)) {
+        setCityOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Compact Hero Section */}
@@ -260,20 +274,68 @@ const SearchOfficePage = () => {
           </select>
 
           {/* City */}
-          <select
-            value={selectedFilters.city}
-            onChange={(e) =>
-              setSelectedFilters({ ...selectedFilters, city: e.target.value })
-            }
-            className="w-full bg-transparent border border-gray-400 text-gray-800 text-sm p-2 rounded-lg focus:border-pink-400 focus:ring-1 focus:ring-pink-300 transition-all"
-          >
-            <option value="">All Cities</option>
-            {filters.cities.map((c) => (
-              <option key={c} value={c} className="text-black">
-                {c}
-              </option>
-            ))}
-          </select>
+          <div ref={cityRef} className="relative w-full">
+            {/* Select box */}
+            <button
+              type="button"
+              onClick={() => setCityOpen((prev) => !prev)}
+              className="w-full bg-transparent border border-gray-400 text-gray-800 text-sm p-2 rounded-lg text-left focus:border-pink-400 focus:ring-1 focus:ring-pink-300"
+            >
+              {selectedFilters.city || "All Cities"}
+            </button>
+
+            {/* Dropdown */}
+            {cityOpen && (
+              <div className="absolute z-40 mt-1 w-full bg-white border border-gray-300 rounded-lg shadow-lg">
+                {/* Search input */}
+                <input
+                  type="text"
+                  placeholder="Type city..."
+                  value={citySearch}
+                  onChange={(e) => setCitySearch(e.target.value)}
+                  className="w-full p-2 text-sm border-b outline-none"
+                />
+
+                {/* Scrollable list */}
+                <ul className="max-h-48 overflow-y-auto">
+                  <li
+                    onClick={() => {
+                      setSelectedFilters({ ...selectedFilters, city: "" });
+                      setCityOpen(false);
+                      setCitySearch("");
+                    }}
+                    className="p-2 cursor-pointer hover:bg-gray-100 text-sm"
+                  >
+                    All Cities
+                  </li>
+
+                  {filters.cities
+                    .filter((c) =>
+                      c.toLowerCase().includes(citySearch.toLowerCase())
+                    )
+                    .map((c) => (
+                      <li
+                        key={c}
+                        onClick={() => {
+                          setSelectedFilters({ ...selectedFilters, city: c });
+                          setCityOpen(false);
+                          setCitySearch("");
+                        }}
+                        className="p-2 cursor-pointer hover:bg-gray-100 text-sm"
+                      >
+                        {c}
+                      </li>
+                    ))}
+
+                  {filters.cities.filter((c) =>
+                    c.toLowerCase().includes(citySearch.toLowerCase())
+                  ).length === 0 && (
+                    <li className="p-2 text-sm text-gray-400">No city found</li>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
 
           {/* Price Range */}
           <select
