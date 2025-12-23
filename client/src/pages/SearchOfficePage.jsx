@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState,useRef, useEffect } from "react";
+import React, { lazy, Suspense, useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 
@@ -163,13 +163,20 @@ const SearchOfficePage = () => {
   const goToPage = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      window.scrollTo({ top: 300, behavior: "smooth" });
+      // window.scrollTo({ top: 300, behavior: "smooth" });
     }
   };
+  useEffect(() => {
+    window.scrollTo({
+      top: 300, // adjust if needed
+      behavior: "smooth",
+    });
+  }, [currentPage]);
 
   const [cityOpen, setCityOpen] = useState(false);
   const [citySearch, setCitySearch] = useState("");
   const cityRef = useRef(null);
+
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (cityRef.current && !cityRef.current.contains(e.target)) {
@@ -439,6 +446,7 @@ const SearchOfficePage = () => {
                 <div className="space-y-4">
                   {currentOffices.map((office) => (
                     <div
+                      id="top"
                       key={office._id}
                       className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-visible group"
                     >

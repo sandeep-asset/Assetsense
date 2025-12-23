@@ -627,6 +627,7 @@ const OfficeDetails = () => {
                 </div>
 
                 <button
+                  
                   onClick={handleBookNow}
                   className="w-full bg-blue-600 text-white cursor-pointer py-4 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-lg"
                 >

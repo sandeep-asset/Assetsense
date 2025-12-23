@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
@@ -134,15 +135,15 @@ const Gallery = () => {
                         <div className="absolute bottom-3 left-3 right-3 text-white">
                           <div
                             className={`inline-flex items-center px-2 py-1 rounded-md text-white text-xs font-medium mb-2
-    ${
-      office.type === "Coworking Space"
-        ? "bg-blue-600/90"
-        : office.type === "Virtual Office"
-        ? "bg-[#17CFBF]"
-        : office.type === "Virtual and Coworking"
-        ? "bg-[#9810FA]"
-        : "bg-gray-600/90"
-    }`}
+              ${
+                office.type === "Coworking Space"
+                  ? "bg-blue-600/90"
+                  : office.type === "Virtual Office"
+                  ? "bg-[#17CFBF]"
+                  : office.type === "Virtual and Coworking"
+                  ? "bg-[#9810FA]"
+                  : "bg-gray-600/90"
+              }`}
                           >
                             {office.type || "Office"}
                           </div>
@@ -165,15 +166,15 @@ const Gallery = () => {
 
                     {/* View Details button */}
                     <div className="p-3 text-center bg-gray-50 border-t">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          navigate(`/office/${office._id}`);
-                        }}
+                      <Link
+                        to={`/office/${office._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className="inline-block px-4 py-2 rounded-md bg-[#6aebe2] text-gray-900 font-semibold text-sm hover:bg-[#5cd6ce] transition-colors duration-200"
                       >
                         View Details
-                      </button>
+                      </Link>
                     </div>
                   </div>
                 ))}

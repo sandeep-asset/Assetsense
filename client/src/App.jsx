@@ -15,6 +15,7 @@ import useGTM from "./useGTM";
 import DocumentGenerator from "./components/AdminComponents/DocumentGenerator";
 import StickyChat from "./pages/StickyChat";
 
+
 // Lazy pages
 const Gurgaon = React.lazy(() => import("./pages/Gurgaon"));
 const SearchOfficePage = React.lazy(() => import("./pages/SearchOfficePage"));
@@ -63,6 +64,7 @@ function App() {
         <Navbar />
         <StickyWatsapp />
         <StickyChat />
+       
         <ScrollToTopButton />
 
         <Toaster />

@@ -323,7 +323,12 @@ const Home = () => {
                     key={office._id}
                     className="transform hover:scale-[1.02] transition-transform duration-300"
                   >
-                    <Link key={office._id} to={`/office/${office.slug}`}>
+                    <Link
+                      key={office._id}
+                      to={`/office/${office.slug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Suspense
                         fallback={
                           <div className="h-60 bg-gray-200 rounded-xl animate-pulse" />

@@ -210,30 +210,6 @@ const OfficeFilters = ({ onFilterChange }) => {
 
           {/* === Row 1: Type, City, Price === */}
           <div className="flex flex-wrap justify-center items-center gap-2 sm:gap-3 w-full">
-            {/* Type */}
-            <div className="flex-1 min-w-[90px]">
-              <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex  gap-1">
-                <FaBuilding className="text-blue-400 text-[10px]" />
-                Office Type
-              </label>
-              <select
-                value={tempFilters.type}
-                onChange={(e) =>
-                  setTempFilters((prev) => ({ ...prev, type: e.target.value }))
-                }
-                className="w-full p-2 bg-white/20 border border-white/30 rounded-md focus:border-blue-400 focus:ring-1 focus:ring-blue-300 text-[11px] sm:text-xs text-white"
-              >
-                <option className="text-black" value="">
-                  All
-                </option>
-                {filterOptions.officeTypes.map((type) => (
-                  <option key={type} value={type} className="text-black">
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </div>
-
             {/* City */}
             {/* City */}
             <div ref={cityDropdownRef} className="flex-1 min-w-[90px] relative">
@@ -252,7 +228,7 @@ const OfficeFilters = ({ onFilterChange }) => {
 
               {/* Dropdown */}
               {cityOpen && (
-                <div className="w-[40vw]  absolute z-50 mt-1 md:w-full bg-white rounded-md shadow-lg border border-gray-200">
+                <div className="w-[60vw]  absolute z-50 mt-1 md:w-full bg-white rounded-md shadow-lg border border-gray-200">
                   {/* Search Input */}
                   <input
                     type="text"
@@ -263,7 +239,7 @@ const OfficeFilters = ({ onFilterChange }) => {
                   />
 
                   {/* City List */}
-                  <ul className="max-h-40 overflow-y-auto">
+                  <ul className="max-h-60 overflow-y-auto">
                     <li
                       className="p-2 text-sm text-left text-black cursor-pointer hover:bg-gray-100"
                       onClick={() => {
@@ -305,8 +281,32 @@ const OfficeFilters = ({ onFilterChange }) => {
               )}
             </div>
 
-            {/* Price */}
+            {/* Type */}
             <div className="flex-1 min-w-[90px]">
+              <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex  gap-1">
+                <FaBuilding className="text-blue-400 text-[10px]" />
+                Office Type
+              </label>
+              <select
+                value={tempFilters.type}
+                onChange={(e) =>
+                  setTempFilters((prev) => ({ ...prev, type: e.target.value }))
+                }
+                className="w-full p-2 bg-white/20 border border-white/30 rounded-md focus:border-blue-400 focus:ring-1 focus:ring-blue-300 text-[11px] sm:text-xs text-white"
+              >
+                <option className="text-black" value="">
+                  All
+                </option>
+                {filterOptions.officeTypes.map((type) => (
+                  <option key={type} value={type} className="text-black">
+                    {type}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Price */}
+            <div className=" hidden md:block flex-1 min-w-[90px]">
               <label className="sm:block text-[11px] font-semibold text-gray-100 mb-1 flex items-center gap-1">
                 <FaRupeeSign className="text-green-400 text-[10px]" /> Price
                 range
@@ -335,19 +335,57 @@ const OfficeFilters = ({ onFilterChange }) => {
           </div>
 
           {/* === Row 2: Buttons === */}
-          <div className="flex justify-center gap-3 mt-3 flex-wrap">
-            <button
-              onClick={handleApply}
-              className="bg-green-500/80 hover:bg-green-600 text-white py-1.5 px-5 rounded-md text-[11px] sm:text-xs font-semibold shadow-sm"
-            >
-              Apply
-            </button>
-            <button
-              onClick={handleReset}
-              className="bg-white/20 hover:bg-white/30 border border-white/20 text-gray-100 py-1.5 px-5 rounded-md text-[11px] sm:text-xs font-semibold flex items-center gap-1"
-            >
-              <FaSyncAlt className="text-[10px]" /> Reset
-            </button>
+          <div className="flex  justify-center gap-3 mt-3 flex-wrap items-end">
+            {/* Price */}
+            <div className="flex md:max-w-[300px]  justify-center gap-3 mt-3 flex-wrap items-end">
+              <div className="md:hidden flex-1 min-w-[70px] md:flex flex-col">
+                {/* <label className="text-[11px] font-semibold text-gray-100 mb-1 flex items-center gap-1">
+                <FaRupeeSign className="text-green-400 text-[10px]" /> Price
+                range
+                </label> */}
+                <select
+                  value={tempFilters.priceRange}
+                  onChange={(e) =>
+                    setTempFilters((prev) => ({
+                      ...prev,
+                      priceRange: e.target.value,
+                    }))
+                  }
+                  className="h-[34px] w-full p-2 bg-white/20 border border-white/30 rounded-md focus:border-green-400 focus:ring-1 focus:ring-green-300 text-[11px] sm:text-xs text-white"
+                >
+                  {dynamicPriceRanges.map((range) => (
+                    <option
+                      key={range.label}
+                      value={range.label}
+                      className="text-black"
+                    >
+                      {range.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Reset */}
+              <div className="flex min-w-[70px]">
+                <button
+                  onClick={handleReset}
+                  className="h-[34px] w-full bg-white/20 hover:bg-white/30 border border-white/20 text-gray-100 rounded-md text-[11px] sm:text-xs font-semibold flex items-center justify-center"
+                >
+                  Reset
+                  <FaSyncAlt className=" ml-1 text-[10px]" />
+                </button>
+              </div>
+
+              {/* Apply */}
+              <div className="flex min-w-[70px]">
+                <button
+                  onClick={handleApply}
+                  className="h-[34px] w-full bg-green-500/80 hover:bg-green-600 text-white rounded-md text-[11px] sm:text-xs font-semibold shadow-sm"
+                >
+                  Apply
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* === Row 3: Active Filters === */}
