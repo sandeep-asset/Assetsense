@@ -4,7 +4,7 @@ import { FaBuilding, FaTimes } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const GOOGLE_FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSfSdWaa2u_xJQ6aLlq7-SSl5tVsCbL7dhNyzxrZt2xzodxLbA/formResponse";
+  "https://docs.google.com/forms/d/e/1FAIpQLSfo3HyK19kkztwi3e33-OprpJKeDnDlMXEbQMqxjNbKrNL_xQ/formResponse";
 
 const PopupLeadForm = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -32,10 +32,10 @@ const PopupLeadForm = ({ isOpen, onClose }) => {
 
     // Prepare data for Google Form
     const form = new FormData();
-    form.append("entry.38467498", formData.name);
-    form.append("entry.434722229", formData.phone);
-    form.append("entry.1194871815", formData.city);
-    form.append("entry.666341266", finalRequirement);
+    form.append("entry.1266666314", formData.name);
+    form.append("entry.2050731", formData.phone);
+    form.append("entry.1882873407", formData.city);
+    form.append("entry.275524318", finalRequirement);
 
     try {
       await fetch(GOOGLE_FORM_URL, {

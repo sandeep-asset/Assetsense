@@ -27,15 +27,15 @@ const ContactForm = () => {
 
   // Google Form URL (replace with your formResponse link)
   const GOOGLE_FORM_URL =
-    "https://docs.google.com/forms/d/e/1FAIpQLSfSdWaa2u_xJQ6aLlq7-SSl5tVsCbL7dhNyzxrZt2xzodxLbA/formResponse";
+    "https://docs.google.com/forms/d/e/1FAIpQLSfo3HyK19kkztwi3e33-OprpJKeDnDlMXEbQMqxjNbKrNL_xQ/formResponse";
 
   // Google Form entry IDs (replace these with your own form entry IDs)
   const ENTRY_IDS = {
-    name: "entry.38467498",
-    phone: "entry.434722229",
-    service: "entry.666341266",
-    city: "entry.1194871815",
-    message: "entry.1844357054", // Update this with your actual message field ID
+    name: "entry.1266666314",
+    phone: "entry.2050731",
+    service: "entry.275524318",
+    city: "entry.1882873407",
+    message: "entry.1263103551", // Update this with your actual message field ID
   };
 
   const handleSubmit = async (e) => {
