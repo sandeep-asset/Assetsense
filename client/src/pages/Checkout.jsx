@@ -482,7 +482,7 @@ const Checkout = () => {
           </div>
 
           <a
-            href="https://wa.me/919078006000"
+            href="https://wa.me/919907800600"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-green-600 font-semibold text-sm hover:underline"

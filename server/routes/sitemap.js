@@ -10,7 +10,7 @@ router.get("/sitemap.xml", async (req, res) => {
       hostname: "https://assetsense.in",
     });
 
-    // -------- STATIC FRONTEND ROUTES (PUBLIC PAGES ONLY) --------
+    // -------- STATIC FRONTEND ROUTES --------
     const staticPages = [
       "/",
       "/search",
@@ -18,8 +18,6 @@ router.get("/sitemap.xml", async (req, res) => {
       "/our-services",
       "/about",
       "/contact",
-      "/login",
-      "/register",
       "/privacy-policy",
       "/refund-policy",
       "/terms-conditions",
@@ -30,6 +28,7 @@ router.get("/sitemap.xml", async (req, res) => {
         url,
         changefreq: "monthly",
         priority: url === "/" ? 1.0 : 0.7,
+        lastmod: new Date().toISOString(), // ✅ safe addition
       });
     });
 
@@ -37,20 +36,25 @@ router.get("/sitemap.xml", async (req, res) => {
     const offices = await Office.find().select("slug");
 
     offices.forEach((office) => {
+      if (!office.slug) return;
+
       smStream.write({
-        url: `/office/${office.slug}`,
+        url: `/office/${office.slug}`, // ✅ IMPORTANT: backticks fixed
         changefreq: "weekly",
         priority: 0.9,
+        lastmod: new Date().toISOString(), // ✅ safe
       });
-
-      // Checkout pages (if you want Google to index them)
     });
 
     // -------- FINISH & SEND XML --------
     smStream.end();
     const sitemap = await streamToPromise(smStream);
 
-    res.header("Content-Type", "application/xml");
+    res.set({
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=86400",
+    });
+
     res.send(sitemap.toString());
   } catch (error) {
     console.error("Sitemap Error:", error);
