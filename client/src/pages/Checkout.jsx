@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
 import toast from "react-hot-toast";
@@ -23,6 +23,7 @@ import { MdSecurity } from "react-icons/md";
 const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const office = location.state?.office;
   const [upsellServices, setUpsellServices] = useState([]);
   const [user, setUser] = useState({ name: "", email: "", phone: "" });

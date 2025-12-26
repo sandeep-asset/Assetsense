@@ -228,16 +228,6 @@ const TargetAudience = () => {
           })}
         </div>
       </div>
-      <div className="items-center flex mt-10 justify-center">
-        <a
-          href="https://assetsense.in/"
-          target="_blank" // opens in new tab (optional)
-          rel="noopener noreferrer"
-          className="bg-blue-600 text-gray-100 text-lg px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:from-[#267985] hover:to-green-600 transform hover:-translate-y-1"
-        >
-          Visit Main Website
-        </a>
-      </div>
     </section>
   );
 };

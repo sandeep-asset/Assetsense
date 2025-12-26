@@ -32,6 +32,10 @@ const OfficeDetails = () => {
     navigate(`/checkout/${office.slug}`, { state: { office } });
   };
 
+  // back from checkout page for resotration of scroll
+  // start
+
+  //end
   const [isFormOpen, setIsFormOpen] = useState(false);
   const { id } = useParams();
   const { slug } = useParams();
@@ -154,7 +158,10 @@ const OfficeDetails = () => {
           </Link>
           <h1 className="text-3xl font-bold text-gray-900">{office.name}</h1>
 
-          <div className="flex items-center gap-4 mt-2 flex-wrap">
+          <div
+            id="office_details"
+            className="flex items-center gap-4 mt-2 flex-wrap"
+          >
             <span
               className={`px-3 py-1 rounded-full text-sm font-medium ${
                 office.type === "Virtual Office"
