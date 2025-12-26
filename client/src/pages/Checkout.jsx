@@ -132,10 +132,37 @@ const Checkout = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate(-1);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 50);
+  };
+
   return (
     <div className="max-w-3xl mx-auto p-6 md:p-10 bg-white rounded-2xl shadow-xl border border-gray-100 mt-8 mb-8">
       {/* Header */}
       <div className="flex mb-4 items-center justify-center gap-2 md:gap-4 max-w-3xl mx-auto">
+        <button
+          onClick={handleBack}
+          className="
+    fixed
+    top-23
+    left-4
+    z-50
+    bg-white
+    shadow-sm
+    border
+    rounded-full
+    px-2 py-1
+    text-sm font-medium
+    flex items-center gap-1
+    hover:bg-gray-100
+  "
+        >
+          ← Back
+        </button>
+
         {/* Step 1 */}
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
