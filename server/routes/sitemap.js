@@ -21,6 +21,9 @@ router.get("/sitemap.xml", async (req, res) => {
       "/privacy-policy",
       "/refund-policy",
       "/terms-conditions",
+      "/office/affordable-virtual-office-in-jaipur-rajasthan",
+      "/office/best-value-virtual-office-in-new-delhi-safdarjung-enclave-pin-110029",
+      "/office/premium-coworking-office-in-spaze-i-tech-park-sohna-road-gurgaon-122001-haryana",
     ];
 
     staticPages.forEach((url) => {
