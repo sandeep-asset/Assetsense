@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   const fetchOffices = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(`${backendUrl}/api/offices?limit=1000`);
+      const response = await axios.get(`${backendUrl}/api/admin?limit=1000`);
 
       if (response.data.success) {
         const officesData = response.data.data.offices;
@@ -169,6 +169,32 @@ const AdminDashboard = () => {
       </div>
     );
   }
+
+  // office toogle status
+  const toggleOfficeStatus = async (officeId) => {
+    try {
+      const response = await axios.patch(
+        `${backendUrl}/api/admin/${officeId}/status`,
+        {}
+      );
+
+      if (response.data.isActive !== undefined) {
+        toast.success("Office status updated");
+
+        // 🔥 Update UI instantly (no refetch needed)
+        setOffices((prev) =>
+          prev.map((office) =>
+            office._id === officeId
+              ? { ...office, isActive: response.data.isActive }
+              : office
+          )
+        );
+      }
+    } catch (error) {
+      toast.error("Failed to update office status");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="min-h-screen md:mt-2 mt-10 bg-gray-50">
@@ -392,6 +418,12 @@ const AdminDashboard = () => {
                       scope="col"
                       className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                     >
+                      Status
+                    </th>
+                    <th
+                      scope="col"
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    >
                       Type
                     </th>
                     <th
@@ -412,12 +444,7 @@ const AdminDashboard = () => {
                     >
                       Price
                     </th>
-                    <th
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      Status
-                    </th>
+
                     <th
                       scope="col"
                       className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -465,6 +492,44 @@ const AdminDashboard = () => {
                         </button>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
+                        <div className="flex items-center">
+                          {/* Toggle */}
+                          <label className="relative inline-flex items-center cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={office.isActive}
+                              onChange={() => toggleOfficeStatus(office._id)}
+                              className="sr-only peer"
+                            />
+
+                            {/* Track */}
+                            <div
+                              className="w-11 h-6 bg-red-300 rounded-full
+        peer peer-checked:bg-green-500 transition-colors duration-300"
+                            ></div>
+
+                            {/* Thumb */}
+                            <span
+                              className="absolute left-1 top-1 w-4 h-4 bg-white rounded-full
+        transition-transform duration-300
+        peer-checked:translate-x-5"
+                            ></span>
+                          </label>
+
+                          {/* Status Text */}
+                          <span
+                            className={`ml-3 text-xs font-semibold leading-none ${
+                              office.isActive
+                                ? "text-green-700"
+                                : "text-red-700"
+                            }`}
+                          >
+                            {office.isActive ? "Active" : "Inactive"}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`inline-flex px-2 py-1 rounded-full text-xs font-semibold shadow-sm ${
                             office.type === "Virtual Office"
@@ -510,11 +575,7 @@ const AdminDashboard = () => {
                           </div>
                         )}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                          Active
-                        </span>
-                      </td>
+
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button
                           onClick={() => handleEdit(office)}

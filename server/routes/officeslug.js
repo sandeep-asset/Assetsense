@@ -15,6 +15,7 @@ import {
   searchOfficesfilter,
   updateOffice,
 } from "../controllers/officecontrollerSlug.js";
+import { activeOfficeOnly } from "../middleware/activeOfficeOnly.js";
 
 dotenv.config();
 
@@ -37,19 +38,20 @@ const upload = multer({
 });
 
 // Routes
-router.get("/", getAllOffice);
-router.get("/search", searchOffices);
-router.get("/cities", getAllCities);
-router.get("/slug/:slug", getOfficeById);
-router.get("/:slug/related", getRelatedOffices);
+router.get("/", activeOfficeOnly, getAllOffice);
+router.get("/search", activeOfficeOnly, searchOffices);
+router.get("/cities", activeOfficeOnly, getAllCities);
+router.get("/slug/:slug", activeOfficeOnly, getOfficeById);
+router.get("/:slug/related", activeOfficeOnly, getRelatedOffices);
 router.post("/", protect, admin, upload.array("images", 10), createOffice);
 router.put("/:id", protect, admin, upload.array("images", 10), updateOffice);
 router.delete("/:id", protect, admin, deleteOfficeById);
+
 // Get dynamic filters city, price, office type
-router.get("/filters", getOfficeFilters);
+router.get("/filters", activeOfficeOnly, getOfficeFilters);
 // get office for gallery
 
 // Search offices on the basis of filter
-router.get("/searchfilter", searchOfficesfilter);
+router.get("/searchfilter", activeOfficeOnly, searchOfficesfilter);
 
 export default router;

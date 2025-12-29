@@ -160,7 +160,8 @@ export const createOffice = async (req, res) => {
 export const getAllOffice = async (req, res) => {
   try {
     const { type, city, page = 1, limit = 10 } = req.query;
-    let query = {};
+    let query = { isActive: true };
+
     if (type && type !== "all") query.type = type;
     if (city) query["location.city"] = new RegExp(city, "i");
 
@@ -193,7 +194,7 @@ export const getOfficeById = async (req, res) => {
 
     // Try finding by slug first, then by valid ObjectId
     const office =
-      (await Office.findOne({ slug: idOrSlug })) ||
+      (await Office.findOne({ slug: idOrSlug, isActive: true })) ||
       (mongoose.Types.ObjectId.isValid(idOrSlug) &&
         (await Office.findById(idOrSlug)));
 
@@ -343,6 +344,7 @@ export const getRelatedOffices = async (req, res) => {
       _id: { $ne: mainOffice._id },
       "location.city": mainOffice.location.city,
       type: mainOffice.type,
+      isActive: true,
     }).limit(4);
 
     res.status(200).json({ success: true, data: relatedOffices });
@@ -357,7 +359,7 @@ export const searchOffices = async (req, res) => {
   try {
     const { query } = req.query;
     if (!query) {
-      const offices = await Office.find({});
+      const offices = await Office.find({ isActive: true });
       return res.json({ success: true, data: offices });
     }
 
@@ -385,7 +387,7 @@ export const searchOffices = async (req, res) => {
 // Get All Cities
 export const getAllCities = async (req, res) => {
   try {
-    const cities = await Office.distinct("location.city");
+    const cities = await Office.distinct("location.city", { isActive: true });
     res.status(200).json({ success: true, data: cities });
   } catch (error) {
     console.error("Error fetching cities:", error);
@@ -399,7 +401,10 @@ export const getOfficeFilters = async (req, res) => {
     const officeTypes = await Office.distinct("type");
 
     // Fetch all pricing fields
-    const prices = await Office.find({}, { pricing: 1, _id: 0 });
+    const prices = await Office.find(
+      { isActive: true },
+      { pricing: 1, _id: 0 }
+    );
 
     // Extract price arrays (default to 0 if missing)
     const monthlyPrices = prices.map((p) => p.pricing?.monthly || 0);
@@ -434,7 +439,7 @@ export const searchOfficesfilter = async (req, res) => {
   try {
     const { query, type, city, minPrice, maxPrice } = req.query;
 
-    const filter = {};
+    const filter = { isActive: true };
 
     if (query) {
       filter.$or = [
@@ -467,8 +472,8 @@ export const searchOfficesfilter = async (req, res) => {
   }
 };
 
-// Toggle office Visibility
-// PATCH /api/admin/offices/:id/status
+// // Toggle office Visibility
+// // PATCH /api/admin/offices/:id/status
 // export const toggleOfficeStatus = async (req, res) => {
 //   try {
 //     const office = await Office.findById(req.params.id);
