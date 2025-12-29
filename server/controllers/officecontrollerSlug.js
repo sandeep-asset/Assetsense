@@ -471,25 +471,3 @@ export const searchOfficesfilter = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
-// // Toggle office Visibility
-// // PATCH /api/admin/offices/:id/status
-// export const toggleOfficeStatus = async (req, res) => {
-//   try {
-//     const office = await Office.findById(req.params.id);
-
-//     if (!office) {
-//       return res.status(404).json({ message: "Office not found" });
-//     }
-
-//     office.isActive = !office.isActive;
-//     await office.save();
-
-//     res.json({
-//       message: "Office visibility updated",
-//       isActive: office.isActive,
-//     });
-//   } catch (error) {
-//     res.status(500).json({ message: "Server error" });
-//   }
-// };

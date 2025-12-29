@@ -167,7 +167,7 @@ const Gallery = () => {
                     {/* View Details button */}
                     <div className="p-3 text-center bg-gray-50 border-t">
                       <Link
-                        to={`/office/${office._id}`}
+                        to={`/office/${office.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
