@@ -14,7 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import useGTM from "./useGTM";
 import DocumentGenerator from "./components/AdminComponents/DocumentGenerator";
 import StickyChat from "./pages/StickyChat";
-
+import Career from "./pages/Career";
 
 // Lazy pages
 const Gurgaon = React.lazy(() => import("./pages/Gurgaon"));
@@ -64,7 +64,7 @@ function App() {
         <Navbar />
         <StickyWatsapp />
         <StickyChat />
-       
+
         <ScrollToTopButton />
 
         <Toaster />
@@ -81,6 +81,7 @@ function App() {
               <Route path="/" element={<Gurgaon />} />
 
               <Route path="/search" element={<SearchOfficePage />} />
+              <Route path="/career" element={<Career />} />
               <Route path="/office/:slug" element={<OfficeDetails />} />
               <Route path="/checkout/:slug" element={<Checkout />} />
               <Route

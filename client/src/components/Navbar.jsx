@@ -61,6 +61,12 @@ const Navbar = () => {
             >
               Services
             </Link>
+            <Link
+              to="/career"
+              className="text-gray-100 hover:text-blue-300 transition-colors font-medium"
+            >
+              Career
+            </Link>
 
             {user ? (
               <>
