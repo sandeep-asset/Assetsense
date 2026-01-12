@@ -36,6 +36,20 @@ const predefinedPriceRanges = {
     { label: "₹25K – ₹40K /yr", min: 25000, max: 39999 },
     { label: "₹40K+ /yr", min: 40000, max: Infinity },
   ],
+  "Managed Office": [
+    { label: "All Managed Office Prices", min: 0, max: Infinity },
+    { label: "₹5k – ₹15K /yr", min: 5000, max: 14999 },
+    { label: "₹15K – ₹25K /yr", min: 15000, max: 24999 },
+    { label: "₹25K – ₹40K /yr", min: 25000, max: 39999 },
+    { label: "₹40K+ /yr", min: 40000, max: Infinity },
+  ],
+  "Commercial Office": [
+    { label: "All Commercial Office Prices", min: 0, max: Infinity },
+    { label: "₹5k – ₹15K /yr", min: 5000, max: 14999 },
+    { label: "₹15K – ₹25K /yr", min: 15000, max: 24999 },
+    { label: "₹25K – ₹40K /yr", min: 25000, max: 39999 },
+    { label: "₹40K+ /yr", min: 40000, max: Infinity },
+  ],
 };
 
 const OfficeFilters = ({ onFilterChange }) => {
