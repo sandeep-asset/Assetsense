@@ -37,7 +37,9 @@ const Career = () => {
             As the first point of contact for the Managed Office vertical, you
             will manage the complete lifecycle of property inventory — from
             sourcing and marketing to client engagement and site visits. This is
-            a high-growth role designed for future leadership.
+            a high-growth role designed for future leadership.We are looking for
+            a dynamic, versatile, and proactive Sales Coordinator to spearhead
+            the operational and marketing efforts for this new division.
           </p>
         </div>
 
@@ -52,13 +54,20 @@ const Career = () => {
               </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
                 <li>
-                  Daily monitoring of property portals like 99acres,
-                  MagicBricks, Housing.com
+                  <strong>Property Hunting: </strong> Daily monitoring of
+                  property portals (99acres, MagicBricks, Housing.com, etc.) to
+                  identify potential managed office spaces.
                 </li>
                 <li>
-                  Build strong broker relationships for off-market inventory
+                  <strong>Broker Relations: </strong>Build and maintain a
+                  network of local real estate brokers to get "off-market" leads
+                  and fresh inventory.
                 </li>
-                <li>Upload and manage listings on the Asset Sense website</li>
+                <li>
+                  <strong>Website Management: </strong>Uploading and updating
+                  property listings on the Asset Sense website, ensuring
+                  high-quality descriptions and accurate data.
+                </li>
               </ul>
             </div>
 
@@ -68,10 +77,13 @@ const Career = () => {
               </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
                 <li>
-                  Promote managed offices on LinkedIn, Instagram, and Facebook
+                  <strong>Social Media Advertising: </strong> Promote available
+                  managed offices across platforms like LinkedIn, Instagram, and
+                  Facebook to generate organic leads.
                 </li>
                 <li>
-                  Coordinate basic content like photos and videos for listings
+                  <strong>Campaign Coordination: </strong> Assist in creating
+                  basic content (photos/videos) for office listings.
                 </li>
               </ul>
             </div>
@@ -81,14 +93,18 @@ const Career = () => {
                 3. Sales Support & Client Engagement
               </h3>
               <ul className="list-disc list-inside text-gray-700 space-y-1">
-                <li>Filter leads and handle initial client communication</li>
                 <li>
-                  Conduct physical site visits (20% field work) for high-intent
-                  clients
+                  <strong>Lead Coordination: </strong>Filter leads and handle
+                  initial client communication
                 </li>
                 <li>
-                  Manage documentation, databases, and internal reporting (80%
-                  office operations)
+                  <strong>Site Visits (20% Field Work): </strong>Conduct
+                  physical site visits (20% field work) for high-intent clients
+                </li>
+                <li>
+                  <strong>Office Operations (80%): </strong> Manage
+                  documentation, databases, and internal reporting (80% office
+                  operations)
                 </li>
               </ul>
             </div>
@@ -101,14 +117,36 @@ const Career = () => {
             Required Skills & Qualifications
           </h2>
           <ul className="grid md:grid-cols-2 gap-4 text-gray-700">
-            <li>✔ Strong communication skills in English & Hindi</li>
             <li>
-              ✔ Familiarity with property portals and social media marketing
+              ✔ <strong>Communication:</strong>Exceptional verbal and written
+              communication skills in English and Hindi to interact with
+              landlords, brokers, and corporate clients.
             </li>
-            <li>✔ Startup mindset with adaptability and ownership</li>
-            <li>✔ Basic negotiation and real estate understanding</li>
-            <li>✔ Strong multitasking and follow-up skills</li>
-            <li>✔ Tools: MS Excel, Google Sheets, Gemini, ChatGPT</li>
+            <li>
+              ✔ <strong>Digital Savvy:</strong>Proficiency in using property
+              portals and a solid understanding of social media platforms for
+              business marketing.
+            </li>
+            <li>
+              ✔ <strong>Adaptability: </strong>A "startup mindset"—the ability
+              to pivot strategies and take on varied tasks as the new vertical
+              evolves.
+            </li>
+            <li>
+              ✔ <strong>Negotiation:</strong>Basic understanding of real estate
+              terms and the ability to negotiate with brokers for better
+              information and access.
+            </li>
+            <li>
+              ✔ <strong>Organization:</strong> Strong multi-tasking skills with
+              the ability to manage multiple listings and client follow-ups
+              simultaneously.
+            </li>
+            <li>
+              ✔ <strong>Technical Tools:</strong> Familiarity with MS
+              Excel/Google Sheets/Gemini/ChatGPT for tracking leads and
+              inventory.
+            </li>
           </ul>
         </div>
 
@@ -135,12 +173,20 @@ const Career = () => {
               💰 <strong>Fixed Salary:</strong> ₹20,000 per month
             </li>
             <li>
-              🚀 <strong>Commission:</strong> 8% – 12% on total commission per
-              managed office lease
+              🚀 <strong>Commission:</strong> Earn 8% to 12% incentive on the
+              total commission received from every managed office lease you
+              facilitate.
             </li>
             <li>
-              📈 <strong>Uncapped Earnings:</strong> High-performance rewards
-              with no upper limit
+              🧮<strong>The Math: </strong>Unlike standard sales roles, our
+              incentive percentage is among the highest in the industry. Closing
+              even a single mid-sized corporate lease can significantly boost
+              your monthly take-home pay far beyond the base salary.
+            </li>
+            <li>
+              📈 <strong>Uncapped Earnings:</strong> There is no limit to what
+              you can earn. As the new vertical grows, your earning potential
+              scales directly with your effort.
             </li>
           </ul>
         </div>
