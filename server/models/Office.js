@@ -31,7 +31,13 @@ const officeSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["Virtual Office", "Coworking Space", "Virtual and Coworking"],
+      enum: [
+        "Virtual Office",
+        "Coworking Space",
+        "Virtual and Coworking",
+        "Managed Office",
+        "Commercial Office",
+      ],
       required: true,
     },
     features: [

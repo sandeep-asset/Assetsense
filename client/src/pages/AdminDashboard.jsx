@@ -17,6 +17,8 @@ const AdminDashboard = () => {
     virtual: 0,
     coworking: 0,
     virtualandcoworking: 0,
+    managed: 0,
+    commercial: 0,
   });
   const { user, loading: authLoading } = useAuth();
 
@@ -40,12 +42,20 @@ const AdminDashboard = () => {
         const virtualandcoworking = officesData.filter(
           (office) => office.type === "Virtual and Coworking"
         ).length;
+        const managed = officesData.filter(
+          (office) => office.type === "Managed Office"
+        ).length;
+        const commercial = officesData.filter(
+          (office) => office.type === "Commercial Office"
+        ).length;
 
         setStats({
           total,
           virtual,
           coworking,
           virtualandcoworking,
+          managed,
+          commercial,
         });
       } else {
         console.error("Error fetching offices:", response.data.message);
@@ -306,6 +316,60 @@ const AdminDashboard = () => {
                 </p>
                 <p className="text-2xl font-semibold text-gray-900">
                   {stats.coworking}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center">
+              <div className="p-3 bg-purple-100 rounded-lg">
+                <svg
+                  className="w-6 h-6 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">
+                  Managed Office
+                </p>
+                <p className="text-2xl font-semibold text-gray-900">
+                  {stats.managed}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6">
+            <div className="flex items-center">
+              <div className="p-3 bg-purple-100 rounded-lg">
+                <svg
+                  className="w-6 h-6 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              </div>
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">
+                  Commercial Office
+                </p>
+                <p className="text-2xl font-semibold text-gray-900">
+                  {stats.commercial}
                 </p>
               </div>
             </div>

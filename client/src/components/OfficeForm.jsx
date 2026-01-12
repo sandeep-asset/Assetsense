@@ -396,6 +396,8 @@ const OfficeForm = ({ office, onClose }) => {
                 >
                   <option value="Virtual Office">Virtual Office</option>
                   <option value="Coworking Space">Coworking Space</option>
+                  <option value="Managed Office">Managed Office</option>
+                  <option value="Commercial Office">Commercial Office</option>
                   <option value="Virtual and Coworking">
                     Virtual and Coworking
                   </option>

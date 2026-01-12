@@ -17,6 +17,7 @@ router.get("/sitemap.xml", async (req, res) => {
       "/gst-registration-checklist",
       "/our-services",
       "/about",
+      "/career",
       "/contact",
       "/privacy-policy",
       "/refund-policy",
@@ -24,6 +25,15 @@ router.get("/sitemap.xml", async (req, res) => {
       "/office/affordable-virtual-office-in-jaipur-rajasthan",
       "/office/best-value-virtual-office-in-new-delhi-safdarjung-enclave-pin-110029",
       "/office/premium-coworking-office-in-spaze-i-tech-park-sohna-road-gurgaon-122001-haryana",
+      "/office/virtual-office-greater-noida-affordable-virtual-office-in-noida",
+      "/office/virtual-office-haridwar-affordable-virtual-office-in-haridwar",
+      "/office/affordable-virtual-office-in-surat-gujarat",
+      "/office/coworking-space-surat-private-cabin-in-surat",
+      "/office/affordable-virtual-office-in-neemuch-mp-pin-458441",
+      "/office/affordable-virtual-office-in-nagpur-maharashtra-pin-441110-for-gst-mca-registration",
+      "/office/virtual-office-guwahati-affordable-virtual-office-in-guwahati-assam-pin-781029",
+      "/office/virtual-office-sangrur-affordable-virtual-office-in-sangrur-pin-148001",
+      "/office/virtual-office-gurgaon-virtual-office-in-emaar-the-palm-square-golf-course-road-extn-rajesh-pilot-marg",
     ];
 
     staticPages.forEach((url) => {
